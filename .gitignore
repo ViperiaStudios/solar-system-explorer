@@ -1,0 +1,38 @@
+# Generated Unity folders
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+# Unity crash recovery stays on this computer.
+/Assets/_Recovery/
+/Assets/_Recovery.meta
+# Editors and local system files
+.vs/
+.vscode/
+.idea/
+*.csproj
+*.sln
+*.suo
+*.user
+*.pidb
+*.booproj
+*.userprefs
+*.opendb
+*.VC.db
+.DS_Store
+Thumbs.db
+*.log
+# Local credentials and build signing
+.env
+.env.*
+*.keystore
+*.p12
+*.pfx
+# Local visual replacements; keep purchased vendor folders separately excluded before publishing.
+/Assets/LocalVisuals/
+/Assets/LocalVisuals.meta

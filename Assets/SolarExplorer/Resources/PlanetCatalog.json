@@ -1,0 +1,417 @@
+{
+  "source": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/",
+  "verified": "2026-10-08; NASA Science facts pages for original article summaries; numerical planetary table last updated 2025-03-18",
+  "planets": [
+    {
+      "name": "Mercury",
+      "category": "TERRESTRIAL PLANET",
+      "description": "Small and rocky, Mercury circles closest to the Sun. Its cratered surface records a long history of impacts.",
+      "diameterKm": 4879,
+      "gravity": 3.7,
+      "orbitalDays": 88.0,
+      "distanceMillionKm": 57.9,
+      "highlight": "The smallest of the eight planets.",
+      "sourceUrl": "https://science.nasa.gov/mercury/facts/",
+      "visualRadius": 5.34,
+      "spinDegreesPerSecond": 8,
+      "color": "#B7AC9C",
+      "secondaryColor": "#5F5B59",
+      "sections": [
+        {
+          "heading": "A SMALL WORLD NEAR THE SUN",
+          "body": "Mercury is the smallest of the eight planets and the closest to the Sun. It is only a little wider than Earth’s Moon. At an average distance of about 58 million kilometers, sunlight reaches this rocky world in roughly three minutes. Despite that proximity, Mercury is not the hottest planet; Venus holds that distinction."
+        },
+        {
+          "heading": "DAYS, YEARS & SEASONS",
+          "body": "Mercury completes an orbit in just 88 Earth days, but turns slowly on its axis: one rotation takes about 59 Earth days. Rotation and orbital motion combine to stretch a complete sunrise-to-sunrise cycle to 176 Earth days. Its oval orbit carries it from about 47 million to 70 million kilometers from the Sun. With very little axial tilt, it has almost no seasons of the kind we experience on Earth."
+        },
+        {
+          "heading": "CRATERS, CLIFFS & HIDDEN ICE",
+          "body": "Impact craters cover much of the surface. Some are surrounded by bright streaks of material thrown out during collisions. Long cliffs record another part of Mercury’s history: as its interior cooled, the planet contracted and its crust wrinkled. Near the poles, permanently shadowed craters can shelter water ice even though sunlit ground elsewhere becomes extremely hot."
+        },
+        {
+          "heading": "INSIDE MERCURY",
+          "body": "A remarkably large metallic core extends through about 85 percent of the planet’s radius. Scientists find evidence that part of it remains liquid. A comparatively thin rocky mantle and crust surround this interior. Mercury also has a weak global magnetic field, roughly one percent as strong as Earth’s at the surface."
+        },
+        {
+          "heading": "AIR & EXTREME TEMPERATURES",
+          "body": "Mercury has a very thin exosphere rather than a substantial atmosphere. Solar particles and small impacts can knock atoms from the ground into this tenuous envelope, which includes oxygen, sodium, hydrogen, helium, and potassium. With little air to store and redistribute heat, daytime temperatures can approach 430°C while nights can fall to about −180°C."
+        },
+        {
+          "heading": "MOONS, RINGS & LIFE",
+          "body": "Mercury has no moons and no rings. Intense solar radiation, severe temperature swings, and the absence of a substantial atmosphere make the surface unsuitable for life as we know it. Its landscapes nevertheless preserve clues to the early history of rocky planets."
+        }
+      ]
+    },
+    {
+      "name": "Venus",
+      "category": "TERRESTRIAL PLANET",
+      "description": "Venus hides beneath thick clouds. A dense atmosphere traps heat, making it the hottest planet in our solar system.",
+      "diameterKm": 12104,
+      "gravity": 8.9,
+      "orbitalDays": 224.7,
+      "distanceMillionKm": 108.2,
+      "highlight": "Hotter than Mercury, despite being farther from the Sun.",
+      "sourceUrl": "https://science.nasa.gov/venus/venus-facts/",
+      "visualRadius": 10.13,
+      "spinDegreesPerSecond": -8,
+      "color": "#F0CB88",
+      "secondaryColor": "#A8743B",
+      "sections": [
+        {
+          "heading": "EARTH’S VERY DIFFERENT NEIGHBOR",
+          "body": "Venus is close to Earth in size and internal structure, yet conditions at its surface are dramatically different. The second planet from the Sun travels at an average distance of about 108 million kilometers. Bright clouds reflect sunlight so effectively that Venus often stands out in our sky near sunrise or sunset."
+        },
+        {
+          "heading": "A SLOW, BACKWARD SPIN",
+          "body": "A rotation takes about 243 Earth days, longer than Venus’s 225-day year. It spins in the opposite direction to most planets, so the Sun would rise in the west and set in the east when viewed from its surface. Because an orbit and an axial rotation measure different motions, the interval between successive sunrises is shorter than one full rotation."
+        },
+        {
+          "heading": "AN EXTREME GREENHOUSE",
+          "body": "Carbon dioxide dominates the thick atmosphere, while clouds of sulfuric acid hide the ground. The atmosphere traps heat so strongly that surface temperatures reach roughly 467°C. Pressure at the ground is about 93 times that at sea level on Earth. Venus stays hotter than Mercury even though it receives less direct sunlight."
+        },
+        {
+          "heading": "THE WORLD BENEATH THE CLOUDS",
+          "body": "Radar observations reveal volcanic plains, mountains, craters, and large deformed regions of crust. NASA’s Magellan spacecraft mapped much of this hidden terrain, allowing scientists to study the surface through the opaque cloud cover. Volcanoes have played a major role in shaping the planet’s landscape."
+        },
+        {
+          "heading": "INTERIOR & MAGNETIC ENVIRONMENT",
+          "body": "Venus is thought to contain an iron core surrounded by a rocky mantle and crust. It lacks an internally generated global magnetic field like Earth’s. Instead, interaction between the solar wind and the upper atmosphere produces an induced magnetic environment around the planet."
+        },
+        {
+          "heading": "COULD ANYTHING LIVE THERE?",
+          "body": "The surface is intensely hostile to life as we know it. Higher in the atmosphere, temperatures and pressures become milder, but the clouds present severe chemical challenges. Whether any part of Venus could support life remains an open scientific question; life has not been confirmed there. Venus has neither moons nor rings."
+        }
+      ]
+    },
+    {
+      "name": "Earth",
+      "category": "TERRESTRIAL PLANET",
+      "description": "Liquid oceans, rocky continents, and a protective atmosphere make Earth our home. It is the only world known to support life.",
+      "diameterKm": 12756,
+      "gravity": 9.8,
+      "orbitalDays": 365.2,
+      "distanceMillionKm": 149.6,
+      "highlight": "Our home in the solar system.",
+      "sourceUrl": "https://science.nasa.gov/earth/facts/",
+      "visualRadius": 16.65,
+      "spinDegreesPerSecond": 8,
+      "color": "#4CAFE3",
+      "secondaryColor": "#376F54",
+      "sections": [
+        {
+          "heading": "OUR OCEAN WORLD",
+          "body": "Earth is the largest rocky planet and the fifth-largest planet overall. It orbits about 150 million kilometers from the Sun, where conditions allow large amounts of liquid water to persist at the surface. It is the only world where life is known to exist, with organisms occupying environments from deep oceans to the atmosphere."
+        },
+        {
+          "heading": "TIME & THE CHANGING SEASONS",
+          "body": "One rotation relative to the stars takes about 23.9 hours, while a trip around the Sun takes roughly 365.25 days. Earth’s axis is tilted about 23.4 degrees relative to its orbital upright. As Earth travels around the Sun, that tilt changes the angle and duration of sunlight in each hemisphere, producing the seasons."
+        },
+        {
+          "heading": "A PLANET THAT REBUILDS ITS SURFACE",
+          "body": "Earth has a solid inner core, a liquid outer core, a rocky mantle, and a thin crust. Large plates of the outer shell move slowly over the interior. Their interactions build mountain ranges, open ocean basins, and generate earthquakes and volcanic activity. Weather, flowing water, and ice continually reshape the exposed ground."
+        },
+        {
+          "heading": "WATER & AIR",
+          "body": "Oceans cover about 71 percent of the surface and hold around 97 percent of Earth’s water. The atmosphere is approximately 78 percent nitrogen and 21 percent oxygen, with other gases making up the remaining fraction. This envelope supports weather and helps moderate temperature, while also shielding the surface from much harmful radiation and burning up many incoming meteoroids."
+        },
+        {
+          "heading": "A MAGNETIC SHIELD",
+          "body": "Motion in Earth’s electrically conducting outer core generates a magnetic field that extends into space. This magnetosphere influences the flow of charged particles from the Sun. Some particles reach the upper atmosphere near the poles and produce auroras as they interact with atmospheric gases."
+        },
+        {
+          "heading": "OUR MOON",
+          "body": "Earth has one natural moon and no rings. The Moon orbits at an average distance of about 384,400 kilometers and helps stabilize the direction of Earth’s rotation axis. A leading explanation for its origin is a giant impact early in Earth’s history, followed by the gathering of debris into the Moon."
+        },
+        {
+          "heading": "A PLACE FOR LIFE",
+          "body": "Liquid water, usable energy, and a rich variety of chemical ingredients support Earth’s biosphere. Life also changes the planet, including its atmosphere. Studying Earth as an interconnected system helps scientists understand its climate and evaluate what makes other worlds potentially habitable."
+        }
+      ]
+    },
+    {
+      "name": "Mars",
+      "category": "TERRESTRIAL PLANET",
+      "description": "Rust-colored dust covers this cold, rocky world. Ancient valleys and dry channels preserve clues to a wetter past.",
+      "diameterKm": 6792,
+      "gravity": 3.7,
+      "orbitalDays": 687.0,
+      "distanceMillionKm": 228.0,
+      "highlight": "The red planet.",
+      "sourceUrl": "https://science.nasa.gov/mars/facts/",
+      "visualRadius": 9.05,
+      "spinDegreesPerSecond": 8,
+      "color": "#E68C63",
+      "secondaryColor": "#703B31",
+      "sections": [
+        {
+          "heading": "THE RED PLANET",
+          "body": "Mars is a rocky world about half Earth’s diameter. Iron minerals in its soil oxidize, giving much of the landscape its rusty color. Today it is a cold, dry desert, but its terrain preserves evidence that liquid water once flowed and collected on the surface."
+        },
+        {
+          "heading": "DAYS & LONG SEASONS",
+          "body": "A Martian day, called a sol, lasts about 24.6 hours. A year lasts 687 Earth days. Its roughly 25-degree axial tilt produces seasons, but they last longer than Earth’s and differ in length because Mars follows a noticeably elliptical orbit around the Sun."
+        },
+        {
+          "heading": "VOLCANOES & VAST CANYONS",
+          "body": "Mars contains enormous volcanic structures, including Olympus Mons, the largest volcano in the solar system. The Valles Marineris canyon system stretches across thousands of kilometers. Craters, dunes, layered rocks, and broad plains record impacts, volcanism, wind, and other processes operating over billions of years."
+        },
+        {
+          "heading": "TRACES OF ANCIENT WATER",
+          "body": "River valleys, deltas, minerals formed in water, and ancient lakebeds suggest that early Mars had wetter environments. Water ice remains in the polar regions and beneath parts of the ground. Understanding when and where water persisted helps researchers choose places to look for evidence of past habitable conditions."
+        },
+        {
+          "heading": "THIN AIR & DUSTY WEATHER",
+          "body": "The atmosphere is mostly carbon dioxide, with nitrogen and argon among its other gases. It is too thin to retain much heat, contributing to large temperature swings. Winds move fine dust across the landscape, and some dust storms can grow until they surround much of the planet."
+        },
+        {
+          "heading": "INTERIOR, MOONS & MAGNETISM",
+          "body": "Mars has a metallic core surrounded by a rocky mantle and crust. It does not have a global magnetic field today, although magnetized areas of ancient crust record a different past. Two small, irregular moons, Phobos and Deimos, orbit Mars. There are no rings; Phobos is slowly moving inward and may eventually break apart or collide with the planet."
+        },
+        {
+          "heading": "THE SEARCH FOR PAST LIFE",
+          "body": "Robotic missions investigate Mars’s geology and the history of water to learn whether suitable environments for life once existed. Finding a formerly habitable setting would not by itself prove that life arose there. No life has been confirmed on Mars."
+        }
+      ]
+    },
+    {
+      "name": "Jupiter",
+      "category": "GAS GIANT",
+      "description": "Jupiter dominates the planets in size. Bright cloud bands and immense storms move through its deep, swirling atmosphere.",
+      "diameterKm": 142984,
+      "gravity": 23.1,
+      "orbitalDays": 4331,
+      "distanceMillionKm": 778.5,
+      "highlight": "The largest planet in our solar system.",
+      "sourceUrl": "https://science.nasa.gov/jupiter/jupiter-facts/",
+      "visualRadius": 30.54,
+      "spinDegreesPerSecond": 13,
+      "color": "#DFC3A0",
+      "secondaryColor": "#9C6850",
+      "sections": [
+        {
+          "heading": "THE GIANT OF THE PLANETS",
+          "body": "Jupiter is the largest planet in our solar system, about 11 times Earth’s width. It orbits at an average distance of roughly 778 million kilometers. Sunlight takes about 43 minutes to reach it, compared with about eight minutes to Earth."
+        },
+        {
+          "heading": "FAST DAYS, LONG YEARS",
+          "body": "Jupiter turns once in approximately 9.9 hours, the shortest day of any planet. A year lasts nearly 12 Earth years. Its small axial tilt means it does not experience strong seasonal changes like those on Earth. Rapid rotation helps shape the planet and organize its atmospheric circulation."
+        },
+        {
+          "heading": "A WORLD WITHOUT SOLID GROUND",
+          "body": "Hydrogen and helium make up most of Jupiter. Descending into it would mean encountering steadily higher pressures and temperatures rather than a firm surface. Deep inside, hydrogen becomes liquid and then electrically conducting metallic hydrogen. Measurements from NASA’s Juno mission suggest that the heavy material in Jupiter’s central region is spread through a diffuse core."
+        },
+        {
+          "heading": "BANDS, JETS & GREAT STORMS",
+          "body": "Alternating bright zones and darker belts trace large atmospheric flows. Powerful jet streams move in opposing directions between these regions. The Great Red Spot is a huge storm that has persisted for centuries, although its size and shape change. Other storms and cloud structures continually develop and evolve."
+        },
+        {
+          "heading": "MOONS WITH WORLDS OF THEIR OWN",
+          "body": "Jupiter’s four large Galilean moons are remarkably different. Io is intensely volcanic; Europa has an icy shell with strong evidence for an ocean beneath it. Ganymede is larger than Mercury, and Callisto is heavily cratered. These moons make the Jovian system a rich destination for studying how worlds form and change."
+        },
+        {
+          "heading": "FAINT RINGS & POWERFUL MAGNETISM",
+          "body": "Jupiter has a faint ring system made largely of dust released by impacts on small moons. Its enormous magnetic environment traps charged particles and creates intense radiation belts. Interactions between the magnetic field, atmosphere, and surrounding particles also produce strong auroras."
+        },
+        {
+          "heading": "THE QUESTION OF HABITABILITY",
+          "body": "Jupiter’s deep atmosphere presents extreme pressures and temperatures that make it an unlikely home for life as we know it. Some of its moons are more promising places to investigate. An ocean beneath Europa’s ice could contain ingredients needed for life, but that possibility is not evidence that life is present."
+        }
+      ]
+    },
+    {
+      "name": "Saturn",
+      "category": "GAS GIANT",
+      "description": "Saturn is surrounded by broad, bright rings. Its pale clouds sit above a deep atmosphere dominated by hydrogen and helium.",
+      "diameterKm": 120536,
+      "gravity": 9.0,
+      "orbitalDays": 10747,
+      "distanceMillionKm": 1432.0,
+      "highlight": "A world framed by rings of ice and rock.",
+      "sourceUrl": "https://science.nasa.gov/saturn/facts/",
+      "visualRadius": 20.12,
+      "spinDegreesPerSecond": 11,
+      "color": "#E8D6A8",
+      "secondaryColor": "#A3936A",
+      "sections": [
+        {
+          "heading": "THE RINGED GIANT",
+          "body": "Saturn is the second-largest planet, orbiting about 1.4 billion kilometers from the Sun. Sunlight takes roughly 80 minutes to travel that distance. Its extensive rings are its most recognizable feature, but the planet itself is a vast, dynamic world of gas, clouds, and deep fluid layers."
+        },
+        {
+          "heading": "TIME & SEASONS",
+          "body": "A day lasts about 10.7 hours, while a complete orbit takes about 29.4 Earth years. Saturn’s rotation axis is tilted nearly 27 degrees, so it experiences seasons. Each season lasts for several Earth years, changing the sunlight received by the planet and its rings."
+        },
+        {
+          "heading": "WHAT LIES BELOW THE CLOUDS",
+          "body": "Saturn is mostly hydrogen and helium. Increasing pressure compresses the gases into deeper fluid layers surrounding an interior enriched in heavier elements. There is no solid surface to stand on. Its average density is lower than water’s, an illustration of how loosely packed its enormous volume is compared with rocky planets."
+        },
+        {
+          "heading": "RINGS MADE OF COUNTLESS PIECES",
+          "body": "The rings consist of enormous numbers of separate particles, mainly water ice with some rocky material and dust. Pieces range from tiny grains to large chunks, and each follows its own orbit. The main rings are extremely thin compared with their breadth. Gaps such as the Cassini Division separate major ring regions, while nearby moons help sculpt their structure."
+        },
+        {
+          "heading": "WINDS & A SIX-SIDED WEATHER PATTERN",
+          "body": "Bands of clouds, fast winds, and powerful storms animate Saturn’s atmosphere. Near its north pole, a long-lived jet stream forms a striking hexagonal pattern. Saturn’s magnetic field and interactions with charged particles also produce auroras high above the polar atmosphere."
+        },
+        {
+          "heading": "A FAMILY OF ICY WORLDS",
+          "body": "Saturn’s moons include Titan, which has a thick atmosphere, and Enceladus, an icy world with an ocean beneath its surface. These environments broaden the search for potentially habitable settings beyond the planets themselves. Conditions within Saturn are hostile to life as we know it, and no life has been confirmed on its moons."
+        }
+      ]
+    },
+    {
+      "name": "Uranus",
+      "category": "ICE GIANT",
+      "description": "Uranus has a quiet blue-green appearance and an extreme axial tilt. It rolls around the Sun almost on its side.",
+      "diameterKm": 51118,
+      "gravity": 8.7,
+      "orbitalDays": 30589,
+      "distanceMillionKm": 2867.0,
+      "highlight": "An ice giant tipped onto its side.",
+      "sourceUrl": "https://science.nasa.gov/uranus/facts/",
+      "visualRadius": 12.81,
+      "spinDegreesPerSecond": -10,
+      "color": "#99DEDD",
+      "secondaryColor": "#4CA9B9",
+      "sections": [
+        {
+          "heading": "A BLUE-GREEN ICE GIANT",
+          "body": "Uranus is about four times Earth’s width and orbits roughly 2.9 billion kilometers from the Sun. William Herschel identified it as a planet in 1781 using a telescope. Methane in its atmosphere absorbs red light, contributing to the planet’s blue-green appearance."
+        },
+        {
+          "heading": "A WORLD TIPPED ON ITS SIDE",
+          "body": "Uranus’s axis is tilted almost 98 degrees, making its rotation look like a sideways roll around the Sun. A major collision early in its history may explain this unusual orientation. Near the solstices, a pole can face the Sun for many years while the other remains in darkness, producing extreme seasonal lighting."
+        },
+        {
+          "heading": "DAYS, YEARS & DISTANCE",
+          "body": "One rotation takes about 17 hours. A trip around the Sun takes approximately 84 Earth years, so each season lasts about 21 years. Sunlight needs about two hours and 40 minutes to reach the planet. Like Venus, Uranus rotates in a direction opposite to most planets."
+        },
+        {
+          "heading": "WHAT “ICE GIANT” MEANS",
+          "body": "The term describes its composition, not a solid frozen surface. Much of Uranus is thought to be a hot, dense fluid containing water, ammonia, and methane above a rocky core. Its outer atmosphere is mostly hydrogen and helium with methane. There is no hard ground where a spacecraft could land."
+        },
+        {
+          "heading": "COLD CLOUDS, ACTIVE WEATHER",
+          "body": "Some atmospheric temperatures can fall to around −224°C. Uranus may look smooth in visible light, but observations reveal clouds, winds, and seasonal activity. Winds can reach about 900 kilometers per hour, showing that this apparently calm planet has a dynamic atmosphere."
+        },
+        {
+          "heading": "RINGS, MOONS & AN UNUSUAL FIELD",
+          "body": "Thirteen known rings encircle Uranus, most of them dark and faint. Many of its moons take names from characters in Shakespeare’s plays and Alexander Pope’s poetry. Its magnetic axis is strongly tilted and offset from the planet’s center; rotation twists the distant magnetic tail into an unusual shape. The planet’s extreme conditions make it unsuitable for life as we know it."
+        }
+      ]
+    },
+    {
+      "name": "Neptune",
+      "category": "ICE GIANT",
+      "description": "Distant Neptune is a cold world with a dynamic atmosphere. Dark storms and fast winds sweep through its clouds.",
+      "diameterKm": 49528,
+      "gravity": 11.0,
+      "orbitalDays": 59800,
+      "distanceMillionKm": 4515.0,
+      "highlight": "The outermost of the eight planets.",
+      "sourceUrl": "https://science.nasa.gov/neptune/neptune-facts/",
+      "visualRadius": 12.57,
+      "spinDegreesPerSecond": 10,
+      "color": "#678FDB",
+      "secondaryColor": "#284F94",
+      "sections": [
+        {
+          "heading": "THE OUTERMOST PLANET",
+          "body": "Neptune is the most distant of the eight planets, roughly 4.5 billion kilometers from the Sun. It is about four times Earth’s width. Sunlight takes about four hours to cross that distance, leaving Neptune with much less solar energy than the inner planets receive."
+        },
+        {
+          "heading": "A LONG JOURNEY AROUND THE SUN",
+          "body": "A rotation takes about 16 hours, while one orbit lasts approximately 165 Earth years. Its axis is tilted about 28 degrees, giving it seasons that each last more than 40 Earth years. Neptune was identified in 1846 after mathematical predictions helped guide telescopic observations to its location."
+        },
+        {
+          "heading": "DEEP FLUIDS, NO SOLID SURFACE",
+          "body": "Like Uranus, Neptune is an ice giant. Its interior is thought to contain hot, dense fluids rich in water, ammonia, and methane surrounding a rocky core. Above these layers is an atmosphere dominated by hydrogen and helium, with methane. Increasing pressure replaces any clear boundary that might resemble solid ground."
+        },
+        {
+          "heading": "THE FASTEST PLANETARY WINDS",
+          "body": "Neptune’s atmosphere hosts the strongest winds measured on a planet in our solar system, reaching about 2,000 kilometers per hour. Dark storm systems form, change, and disappear. The Great Dark Spot seen by Voyager 2 in 1989 was no longer present in later observations, illustrating how active this remote world can be."
+        },
+        {
+          "heading": "COLOR, RINGS & ARCS",
+          "body": "Methane helps give Neptune a blue-green color. Some familiar spacecraft images were processed to emphasize cloud detail and appear more intensely blue than the planet would to the eye. Neptune has faint rings, including regions where material gathers into arcs. Interactions with the moon Galatea help explain parts of this uneven structure."
+        },
+        {
+          "heading": "TRITON & THE OUTER SOLAR SYSTEM",
+          "body": "Neptune’s largest moon, Triton, travels opposite to the planet’s rotation, suggesting it was captured. Voyager 2 observed icy surface features and geyser-like activity there. Neptune also has a strongly tilted magnetic field. Its cold, high-pressure environment is unsuitable for life as we know it, while its system offers clues to the history of the outer solar system."
+        }
+      ]
+    }
+  ],
+  "sun": {
+    "name": "Sun",
+    "category": "G-TYPE STAR",
+    "description": "Our nearest star powers the solar system. Beneath its changing surface, nuclear fusion turns hydrogen into helium and releases light and heat.",
+    "diameterKm": 1400000,
+    "gravity": 274,
+    "orbitalDays": 0,
+    "distanceMillionKm": 0,
+    "highlight": "The Sun is a star. All eight planets, including Earth, orbit it. The glowing loops in this scene illustrate magnetic activity; their size and timing are stylized.",
+    "sourceUrl": "https://science.nasa.gov/sun/facts/",
+    "visualRadius": 22.7,
+    "spinDegreesPerSecond": 3,
+    "color": "#FFBB4D",
+    "secondaryColor": "#FF7733",
+    "statistics": [
+      {
+        "label": "DIAMETER",
+        "value": "1.4 million",
+        "unit": "kilometers"
+      },
+      {
+        "label": "AGE",
+        "value": "4.6 billion",
+        "unit": "years"
+      },
+      {
+        "label": "VISIBLE SURFACE",
+        "value": "5,500",
+        "unit": "°C · photosphere"
+      },
+      {
+        "label": "CORE",
+        "value": "15 million",
+        "unit": "°C"
+      }
+    ],
+    "sections": [
+      {
+        "heading": "THE STAR THAT HOLDS US TOGETHER",
+        "body": "The Sun is a star about 4.6 billion years old, formed from a collapsing cloud of gas and dust. It contains approximately 99.8 percent of the solar system’s mass. Its gravity holds the planets and many smaller objects in orbit, while its light and heat provide the energy that sustains most life on Earth."
+      },
+      {
+        "heading": "A SPHERE OF HOT PLASMA",
+        "body": "The Sun is mainly hydrogen and helium in the form of plasma, a state in which electrons can move separately from atomic nuclei. There is no solid ground. The bright layer we usually see, the photosphere, has a temperature near 5,500°C. Sunspots look dark against their surroundings because strong magnetic fields make those regions cooler."
+      },
+      {
+        "heading": "THE FUSION ENGINE",
+        "body": "At the center, temperatures reach about 15 million degrees Celsius. Under immense pressure, nuclear fusion combines hydrogen into helium and releases energy. That energy travels through the radiative zone and then the convective zone before escaping into space. In the convective zone, hot material rises and cooler material sinks, helping create the changing, mottled texture visible at the surface."
+      },
+      {
+        "heading": "LOOPS, FLARES & ERUPTIONS",
+        "body": "Magnetic fields shape much of the Sun’s activity. Prominences are structures of relatively cool, dense solar material held above the surface, often in arching loops. Solar flares release magnetic energy in sudden bursts of radiation. Coronal mass ejections send large clouds of magnetized plasma into space; these are related forms of activity, but a flare and an ejection are different phenomena."
+      },
+      {
+        "heading": "AN ATMOSPHERE THAT REACHES INTO SPACE",
+        "body": "Above the photosphere lie the chromosphere and the corona. The outer corona can reach temperatures of around two million degrees Celsius, far hotter than the visible surface. The solar wind carries particles and magnetic fields outward, creating a vast region called the heliosphere that extends far beyond the planets."
+      },
+      {
+        "heading": "ROTATION & OUR GALACTIC ADDRESS",
+        "body": "Different parts of the Sun rotate at different rates. Near the equator, a rotation takes roughly 25 Earth days; near the poles it takes around 36. Earth is about 150 million kilometers away, so sunlight takes about eight minutes to reach us. The Sun lies in the Milky Way’s Orion Spur and takes roughly 230 million years to circle the galaxy."
+      },
+      {
+        "heading": "WHY SOLAR ACTIVITY MATTERS",
+        "body": "When solar disturbances reach Earth, they can influence the magnetosphere and produce bright auroras. Strong events can also disrupt satellites, communications, and electrical infrastructure. Observing the Sun helps researchers understand this space weather and the magnetic processes that drive it."
+      },
+      {
+        "heading": "THE SUN’S LONG FUTURE",
+        "body": "The Sun will not remain as it is forever. After exhausting the hydrogen fuel in its core billions of years from now, it will expand into a red giant. Later it will shed its outer layers and leave behind a compact white dwarf. Its current steady phase is only one chapter in the life of a star."
+      }
+    ]
+  }
+}
