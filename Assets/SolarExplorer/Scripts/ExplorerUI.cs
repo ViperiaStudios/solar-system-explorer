@@ -28,6 +28,7 @@ namespace SolarExplorer
         public Button ResetButton { get; private set; }
         public Button SourceButton { get; private set; }
         public Button[] NavigationButtons { get; private set; }
+        public Button GalaxyButton { get; private set; }
         public bool AutomaticLayout { get; set; } = true;
         public bool IsPortrait { get; private set; }
 
@@ -50,7 +51,8 @@ namespace SolarExplorer
             pathsText=theme.Button("ORBITS ON",controls,explorer.ToggleOrbits).GetComponentInChildren<Text>();
             pauseText=theme.Button("PAUSE",controls,explorer.TogglePause).GetComponentInChildren<Text>();
             motionText=theme.Button("SMOOTH",controls,explorer.ToggleMotion).GetComponentInChildren<Text>();
-            foreach(var label in controls.GetComponentsInChildren<Text>()) label.fontSize=13;
+            GalaxyButton=theme.Button("GALAXY",controls,()=>explorer.Universe.OpenMilkyWay());
+            foreach(var label in controls.GetComponentsInChildren<Text>()) label.fontSize=12;
             BuildDetails(); BuildNavigation();
             reticle=Box("Planet targeting frame",root); reticle.anchorMin=reticle.anchorMax=Vector2.one*0.5f;
             reticle.gameObject.AddComponent<HudReticle>().raycastTarget=false; reticle.SetAsFirstSibling();
@@ -225,6 +227,7 @@ namespace SolarExplorer
 
         private void LateUpdate()
         {
+            if(Canvas==null || !Canvas.gameObject.activeInHierarchy) return;
             RefreshInteractionState();
             if(AutomaticLayout && (lastWidth!=Screen.width || lastHeight!=Screen.height || lastSafe!=Screen.safeArea))
                 ApplyLayout(Screen.width,Screen.height,Screen.safeArea,Application.isMobilePlatform || Input.touchSupported);
@@ -260,6 +263,23 @@ namespace SolarExplorer
                 var edge=view.WorldToViewportPoint(body.transform.position+view.transform.up*body.Data.visualRadius*padding);
                 reticle.anchoredPosition=CanvasPoint(center);
                 reticle.sizeDelta=Vector2.one*(Mathf.Abs(edge.y-center.y)*root.rect.height/safeViewport.height*2+12);
+                if(index==5)
+                {
+                    // The ring ellipse needs a rectangular frame, not a sphere-sized square.
+                    Vector2 minimum=Vector2.one*float.PositiveInfinity,maximum=Vector2.one*float.NegativeInfinity;
+                    for(int sample=0;sample<32;sample++)
+                    {
+                        float angle=sample*Mathf.PI*2/32;
+                        Vector3 ring=SolarLayout.SaturnTilt*new Vector3(Mathf.Cos(angle),0,Mathf.Sin(angle))*body.Data.visualRadius*2.35f;
+                        Vector2 point=CanvasPoint(view.WorldToViewportPoint(body.transform.position+ring));
+                        minimum=Vector2.Min(minimum,point); maximum=Vector2.Max(maximum,point);
+                        Vector3 surface=(view.transform.right*Mathf.Cos(angle)+view.transform.up*Mathf.Sin(angle))*body.Data.visualRadius*1.05f;
+                        point=CanvasPoint(view.WorldToViewportPoint(body.transform.position+surface));
+                        minimum=Vector2.Min(minimum,point); maximum=Vector2.Max(maximum,point);
+                    }
+                    reticle.anchoredPosition=(minimum+maximum)*0.5f;
+                    reticle.sizeDelta=maximum-minimum+Vector2.one*12;
+                }
                 var graphic=reticle.GetComponent<HudReticle>(); graphic.BracketsOnly=true;
                 graphic.color=new Color(Accent.r,Accent.g,Accent.b,focused?0.20f:0.66f); graphic.SetVerticesDirty();
             }

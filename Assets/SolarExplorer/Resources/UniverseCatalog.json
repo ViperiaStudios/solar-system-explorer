@@ -1,0 +1,409 @@
+{
+  "reviewed": "2026-10-08",
+  "localGroup": {
+    "id": "local-group",
+    "name": "Local Group",
+    "category": "Our galactic neighborhood",
+    "summary": "Step beyond the Milky Way to explore four neighboring galaxies. Each island of light contains its own enormous population of stars.",
+    "facts": "Five featured galaxies  /  An illustrated neighborhood",
+    "sourceUrl": "https://science.nasa.gov/universe/galaxies/large-scale-structures/",
+    "sections": [
+      {
+        "heading": "More than five galaxies",
+        "body": "The Local Group contains many more galaxies than the five featured here. The Milky Way, Andromeda and Triangulum are its three prominent large members."
+      },
+      {
+        "heading": "Reading this view",
+        "body": "Galaxy sizes, spacing and orientations have been adjusted for browsing. The distance in each galaxy’s panel is a rounded real distance from Earth, not a measurement of the separation on this screen."
+      },
+      {
+        "heading": "From galaxies to planets",
+        "body": "Select the Milky Way to reach our solar neighborhood and its featured confirmed planetary systems. The other galaxies open galaxy information, without fictional planet discoveries."
+      }
+    ]
+  },
+  "neighborhood": {
+    "id": "neighborhood",
+    "name": "Solar neighborhood",
+    "category": "Within the Milky Way",
+    "summary": "Choose a nearby star system, then explore its planets. These destinations all belong to the same galaxy as our Sun.",
+    "facts": "Featured systems: Solar System, Proxima Centauri, TRAPPIST-1",
+    "sourceUrl": "https://science.nasa.gov/exoplanets/",
+    "sections": [
+      {
+        "heading": "Nearby at a galactic scale",
+        "body": "Proxima Centauri is about 4.2 light-years away; TRAPPIST-1 is about 40. These are modest distances compared with the width of the Milky Way."
+      },
+      {
+        "heading": "A guide to destinations",
+        "body": "This is a browsing arrangement, not a star chart. Markers are separated for comfortable tapping; their placement and size do not encode measured coordinates."
+      },
+      {
+        "heading": "Known worlds, unknown scenery",
+        "body": "The planets have measured properties, but we do not have photographs resolving their surfaces. Every exoplanet terrain in this explorer is an artistic interpretation, not evidence of oceans, ice, life or an atmosphere."
+      }
+    ]
+  },
+  "galaxies": [
+    {
+      "id": "milky-way",
+      "name": "Milky Way",
+      "category": "Our home galaxy",
+      "summary": "A luminous disk of stars, gas and dust surrounds a bright central region. Our Solar System occupies a tiny part of this much larger home.",
+      "facts": "Spiral galaxy  /  Stellar disk: over 100,000 light-years",
+      "sourceUrl": "https://science.nasa.gov/universe/galaxies/",
+      "sections": [
+        {
+          "heading": "Our place in the spiral",
+          "body": "The Solar System lies roughly 26,000 light-years from the galactic center. The marked solar neighborhood contains the destinations in this explorer. Even TRAPPIST-1, about 40 light-years away, is extremely close on the scale of the whole galaxy."
+        },
+        {
+          "heading": "A different sense of time",
+          "body": "The Sun takes roughly 240 million years to travel once around the Milky Way. The gentle visual activity here is illustrative; it does not show galactic motion at real speed."
+        },
+        {
+          "heading": "Explore inward",
+          "body": "Open Nearby Stars to choose the Solar System, TRAPPIST-1 or Proxima Centauri. Nearby systems share one marker here because their real separation would be almost invisible at this scale."
+        }
+      ]
+    },
+    {
+      "id": "andromeda",
+      "name": "Andromeda",
+      "category": "M31 / Spiral galaxy",
+      "summary": "Our nearest major galactic neighbor stretches across an enormous disk, with a bright central bulge and long lanes of dust.",
+      "facts": "Distance from Earth: about 2.5 million light-years",
+      "sourceUrl": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-31/",
+      "sections": [
+        {
+          "heading": "A galaxy beyond our own",
+          "body": "Andromeda is a separate galaxy in the Local Group. Its central glow contains crowded stellar populations, while its disk holds star clusters and intricate dust structures."
+        },
+        {
+          "heading": "A portrait made from many views",
+          "body": "Hubble surveys combine hundreds of overlapping observations to resolve vast numbers of individual stars. These studies help astronomers reconstruct how Andromeda grew through encounters with smaller galaxies."
+        },
+        {
+          "heading": "What you can explore",
+          "body": "This is an artistic three-dimensional overview. No planetary systems are presented inside Andromeda: we do not have an established catalog of confirmed planets there to recreate."
+        }
+      ]
+    },
+    {
+      "id": "triangulum",
+      "name": "Triangulum",
+      "category": "M33 / Spiral galaxy",
+      "summary": "A smaller spiral galaxy with bright regions of star formation and a less dominant central bulge.",
+      "facts": "Distance from Earth: about 3 million light-years",
+      "sourceUrl": "https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-33/",
+      "sections": [
+        {
+          "heading": "The third large neighbor",
+          "body": "Triangulum is the Local Group’s third-largest galaxy, after Andromeda and the Milky Way. Its stellar disk is roughly half the size of our galaxy’s."
+        },
+        {
+          "heading": "Stellar nurseries",
+          "body": "Its arms contain extensive sites of star formation. The enormous nebula NGC 604 is one of the Local Group’s major stellar nurseries."
+        },
+        {
+          "heading": "The limits of this atlas",
+          "body": "Its form here is an interpretation of a spiral galaxy, not a reconstruction of every observed star. No confirmed planetary systems are included for Triangulum."
+        }
+      ]
+    },
+    {
+      "id": "large-magellanic-cloud",
+      "name": "Large Magellanic Cloud",
+      "category": "LMC / Irregular dwarf galaxy",
+      "summary": "A nearby companion of the Milky Way, with an uneven distribution of stars and gas rather than a tidy spiral disk.",
+      "facts": "Distance from Earth: about 160,000 light-years",
+      "sourceUrl": "https://science.nasa.gov/earth/earth-observatory/the-galaxy-next-door/",
+      "sections": [
+        {
+          "heading": "A smaller galactic companion",
+          "body": "The Large Magellanic Cloud contains billions of stars and belongs to the Local Group. It is much closer to us than Andromeda."
+        },
+        {
+          "heading": "A different silhouette",
+          "body": "Its irregular outline makes it a useful contrast to the large spiral galaxies in this atlas. The luminous knots and mottled clouds here are illustrative."
+        },
+        {
+          "heading": "Planet discovery",
+          "body": "We show the galaxy itself without inventing a collection of confirmed planets inside it."
+        }
+      ]
+    },
+    {
+      "id": "small-magellanic-cloud",
+      "name": "Small Magellanic Cloud",
+      "category": "SMC / Irregular dwarf galaxy",
+      "summary": "Another nearby galactic companion, presented as an asymmetric cloud of stars and diffuse light.",
+      "facts": "Distance from Earth: about 200,000 light-years",
+      "sourceUrl": "https://science.nasa.gov/photojournal/little-galaxy-explored/",
+      "sections": [
+        {
+          "heading": "Beyond the Milky Way",
+          "body": "The Small Magellanic Cloud is a distinct dwarf galaxy, despite its cloud-like appearance in our sky. It lies near the Large Magellanic Cloud on the sky."
+        },
+        {
+          "heading": "Seeing different ingredients",
+          "body": "Infrared observations reveal stars and dust that are difficult to separate in visible light. Different wavelengths provide complementary views of a galaxy."
+        },
+        {
+          "heading": "Explore with context",
+          "body": "Its colors and outline in this atlas are artistic. Planetary systems are not populated where established measurements are unavailable."
+        }
+      ]
+    }
+  ],
+  "systems": [
+    {
+      "article": {
+        "id": "trappist-1",
+        "name": "TRAPPIST-1",
+        "category": "Ultracool red dwarf / Seven confirmed planets",
+        "summary": "Seven roughly Earth-sized worlds orbit a small, cool star in a remarkably compact system.",
+        "facts": "Distance: about 40 light-years  /  Planets: b through h",
+        "sourceUrl": "https://science.nasa.gov/exoplanets/trappist1/",
+        "sections": [
+          {
+            "heading": "A compact family",
+            "body": "All seven planets fit within the distance between Mercury and our Sun. Their short years make this system very different from the Solar System."
+          },
+          {
+            "heading": "What the viewer shows",
+            "body": "Tap any planet or its destination button to inspect it. Their arrangement, sizes and idle spin are adjusted for readability. The surfaces are artistic, not observed geography."
+          },
+          {
+            "heading": "Open questions",
+            "body": "An orbit in a temperate region does not establish liquid water or life. Atmospheres and surface conditions remain subjects of active research."
+          }
+        ]
+      },
+      "planets": [
+        {
+          "article": {
+            "id": "trappist-b",
+            "name": "TRAPPIST-1 b",
+            "category": "Confirmed exoplanet / Artistic surface",
+            "summary": "World 1 in the TRAPPIST-1 system. Its year lasts about 1.5 Earth days.",
+            "facts": "Radius: 1.116 Earth radii\nMass: 1.374 Earth masses\nOrbital period: 1.5 Earth days",
+            "sourceUrl": "https://science.nasa.gov/exoplanet-catalog/trappist-1-b/",
+            "sections": [
+              {
+                "heading": "What is measured",
+                "body": "Transits reveal this planet as it passes in front of its star. The radius, mass and orbital period shown above are rounded values from NASA’s planet catalog."
+              },
+              {
+                "heading": "What is imagined",
+                "body": "Colors, landforms, lighting and animation in this scene are illustrative. They do not establish the presence of an atmosphere, water, ice or life. Rotate and zoom to explore the artwork while reading the measured facts."
+              }
+            ]
+          },
+          "radiusEarth": 1.116,
+          "orbitalDays": 1.5,
+          "color": "#B48565",
+          "secondaryColor": "#352A26"
+        },
+        {
+          "article": {
+            "id": "trappist-c",
+            "name": "TRAPPIST-1 c",
+            "category": "Confirmed exoplanet / Artistic surface",
+            "summary": "World 2 in the TRAPPIST-1 system. Its year lasts about 2.4 Earth days.",
+            "facts": "Radius: 1.097 Earth radii\nMass: 1.308 Earth masses\nOrbital period: 2.4 Earth days",
+            "sourceUrl": "https://science.nasa.gov/exoplanet-catalog/trappist-1-c/",
+            "sections": [
+              {
+                "heading": "What is measured",
+                "body": "Transits reveal this planet as it passes in front of its star. The radius, mass and orbital period shown above are rounded values from NASA’s planet catalog."
+              },
+              {
+                "heading": "What is imagined",
+                "body": "Colors, landforms, lighting and animation in this scene are illustrative. They do not establish the presence of an atmosphere, water, ice or life. Rotate and zoom to explore the artwork while reading the measured facts."
+              }
+            ]
+          },
+          "radiusEarth": 1.097,
+          "orbitalDays": 2.4,
+          "color": "#C5AF93",
+          "secondaryColor": "#48423D"
+        },
+        {
+          "article": {
+            "id": "trappist-d",
+            "name": "TRAPPIST-1 d",
+            "category": "Confirmed exoplanet / Artistic surface",
+            "summary": "World 3 in the TRAPPIST-1 system. Its year lasts about 4 Earth days.",
+            "facts": "Radius: 0.788 Earth radii\nMass: 0.388 Earth masses\nOrbital period: 4 Earth days",
+            "sourceUrl": "https://science.nasa.gov/exoplanet-catalog/trappist-1-d/",
+            "sections": [
+              {
+                "heading": "What is measured",
+                "body": "Transits reveal this planet as it passes in front of its star. The radius, mass and orbital period shown above are rounded values from NASA’s planet catalog."
+              },
+              {
+                "heading": "What is imagined",
+                "body": "Colors, landforms, lighting and animation in this scene are illustrative. They do not establish the presence of an atmosphere, water, ice or life. Rotate and zoom to explore the artwork while reading the measured facts."
+              }
+            ]
+          },
+          "radiusEarth": 0.788,
+          "orbitalDays": 4,
+          "color": "#849CA4",
+          "secondaryColor": "#323A42"
+        },
+        {
+          "article": {
+            "id": "trappist-e",
+            "name": "TRAPPIST-1 e",
+            "category": "Confirmed exoplanet / Artistic surface",
+            "summary": "World 4 in the TRAPPIST-1 system. Its year lasts about 6.1 Earth days.",
+            "facts": "Radius: 0.92 Earth radii\nMass: 0.692 Earth masses\nOrbital period: 6.1 Earth days",
+            "sourceUrl": "https://science.nasa.gov/exoplanet-catalog/trappist-1-e/",
+            "sections": [
+              {
+                "heading": "What is measured",
+                "body": "Transits reveal this planet as it passes in front of its star. The radius, mass and orbital period shown above are rounded values from NASA’s planet catalog."
+              },
+              {
+                "heading": "What is imagined",
+                "body": "Colors, landforms, lighting and animation in this scene are illustrative. They do not establish the presence of an atmosphere, water, ice or life. Rotate and zoom to explore the artwork while reading the measured facts."
+              }
+            ]
+          },
+          "radiusEarth": 0.92,
+          "orbitalDays": 6.1,
+          "color": "#AAB4A6",
+          "secondaryColor": "#3A4140"
+        },
+        {
+          "article": {
+            "id": "trappist-f",
+            "name": "TRAPPIST-1 f",
+            "category": "Confirmed exoplanet / Artistic surface",
+            "summary": "World 5 in the TRAPPIST-1 system. Its year lasts about 9.2 Earth days.",
+            "facts": "Radius: 1.045 Earth radii\nMass: 1.039 Earth masses\nOrbital period: 9.2 Earth days",
+            "sourceUrl": "https://science.nasa.gov/exoplanet-catalog/trappist-1-f/",
+            "sections": [
+              {
+                "heading": "What is measured",
+                "body": "Transits reveal this planet as it passes in front of its star. The radius, mass and orbital period shown above are rounded values from NASA’s planet catalog."
+              },
+              {
+                "heading": "What is imagined",
+                "body": "Colors, landforms, lighting and animation in this scene are illustrative. They do not establish the presence of an atmosphere, water, ice or life. Rotate and zoom to explore the artwork while reading the measured facts."
+              }
+            ]
+          },
+          "radiusEarth": 1.045,
+          "orbitalDays": 9.2,
+          "color": "#A6A1B8",
+          "secondaryColor": "#333140"
+        },
+        {
+          "article": {
+            "id": "trappist-g",
+            "name": "TRAPPIST-1 g",
+            "category": "Confirmed exoplanet / Artistic surface",
+            "summary": "World 6 in the TRAPPIST-1 system. Its year lasts about 12.4 Earth days.",
+            "facts": "Radius: 1.129 Earth radii\nMass: 1.321 Earth masses\nOrbital period: 12.4 Earth days",
+            "sourceUrl": "https://science.nasa.gov/exoplanet-catalog/trappist-1-g/",
+            "sections": [
+              {
+                "heading": "What is measured",
+                "body": "Transits reveal this planet as it passes in front of its star. The radius, mass and orbital period shown above are rounded values from NASA’s planet catalog."
+              },
+              {
+                "heading": "What is imagined",
+                "body": "Colors, landforms, lighting and animation in this scene are illustrative. They do not establish the presence of an atmosphere, water, ice or life. Rotate and zoom to explore the artwork while reading the measured facts."
+              }
+            ]
+          },
+          "radiusEarth": 1.129,
+          "orbitalDays": 12.4,
+          "color": "#BCAD92",
+          "secondaryColor": "#40372E"
+        },
+        {
+          "article": {
+            "id": "trappist-h",
+            "name": "TRAPPIST-1 h",
+            "category": "Confirmed exoplanet / Artistic surface",
+            "summary": "World 7 in the TRAPPIST-1 system. Its year lasts about 18.8 Earth days.",
+            "facts": "Radius: 0.755 Earth radii\nMass: 0.326 Earth masses\nOrbital period: 18.8 Earth days",
+            "sourceUrl": "https://science.nasa.gov/exoplanet-catalog/trappist-1-h/",
+            "sections": [
+              {
+                "heading": "What is measured",
+                "body": "Transits reveal this planet as it passes in front of its star. The radius, mass and orbital period shown above are rounded values from NASA’s planet catalog."
+              },
+              {
+                "heading": "What is imagined",
+                "body": "Colors, landforms, lighting and animation in this scene are illustrative. They do not establish the presence of an atmosphere, water, ice or life. Rotate and zoom to explore the artwork while reading the measured facts."
+              }
+            ]
+          },
+          "radiusEarth": 0.755,
+          "orbitalDays": 18.8,
+          "color": "#A4C6D6",
+          "secondaryColor": "#3A4B5B"
+        }
+      ]
+    },
+    {
+      "article": {
+        "id": "proxima-centauri",
+        "name": "Proxima Centauri",
+        "category": "Nearby red dwarf / Featured confirmed world",
+        "summary": "Our nearest stellar neighbor hosts Proxima b, a planet detected through the small motion it produces in its star.",
+        "facts": "Distance: about 4.2 light-years  /  Featured planet: Proxima b",
+        "sourceUrl": "https://science.nasa.gov/universe/exoplanets/eso-discovers-earth-size-planet-in-habitable-zone-of-nearest-star/",
+        "sections": [
+          {
+            "heading": "A close stellar neighbor",
+            "body": "Proxima Centauri is the small red-dwarf member of the Alpha Centauri stellar system. Its low luminosity puts temperate orbits much closer to the star than Earth is to the Sun."
+          },
+          {
+            "heading": "A featured destination",
+            "body": "This scene features Proxima b; it is not an exhaustive inventory of every reported companion. The displayed terrain and rotation are artistic."
+          },
+          {
+            "heading": "Habitability is unresolved",
+            "body": "Being in a potentially temperate orbit is not proof of an atmosphere, surface water or life. A red dwarf’s stellar activity is also relevant to conditions on its planets."
+          }
+        ]
+      },
+      "planets": [
+        {
+          "article": {
+            "id": "proxima-b",
+            "name": "Proxima Centauri b",
+            "category": "Confirmed exoplanet / Artistic surface",
+            "summary": "A nearby world with a short year, orbiting much closer to its cool star than Earth orbits the Sun.",
+            "facts": "Orbital period: 11.2 Earth days\nDiscovery method: radial velocity\nRadius: not directly measured",
+            "sourceUrl": "https://science.nasa.gov/exoplanet-catalog/proxima-centauri-b/",
+            "sections": [
+              {
+                "heading": "Detecting an unseen world",
+                "body": "The radial-velocity method measures a star’s motion along our line of sight. Proxima b was announced in 2016 and completes an orbit in about 11.2 days."
+              },
+              {
+                "heading": "Why no measured radius?",
+                "body": "The displayed globe is illustrative. Its size is chosen for browsing; the radius estimate on the NASA page is not a direct measurement."
+              },
+              {
+                "heading": "An interpretation, not a photograph",
+                "body": "The rocky appearance is fictional artwork for a confirmed planet. It does not show known continents, surface composition, water or an atmosphere."
+              }
+            ]
+          },
+          "radiusEarth": 1.02,
+          "orbitalDays": 11.2,
+          "color": "#AC8F79",
+          "secondaryColor": "#3B3435"
+        }
+      ]
+    }
+  ]
+}

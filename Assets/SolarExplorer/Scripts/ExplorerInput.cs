@@ -53,6 +53,7 @@ namespace SolarExplorer
         {
             if(explorer.InteractionLocked) return;
             if(OverInterface(position)) return;
+            if(explorer.Universe!=null && explorer.Universe.Active) { explorer.Universe.SelectAt(position); return; }
             var camera=explorer.CameraRig.GetComponent<Camera>();
             RaycastHit hit;
             if(Physics.Raycast(camera.ScreenPointToRay(position),out hit,1400))

@@ -63,7 +63,11 @@ namespace SolarExplorer
             surface.transform.localRotation = Quaternion.Euler(0, index == 2 ? 55 : index * 39, index == 6 ? 98 : 12);
             if(index==2) surface.transform.localRotation=Quaternion.Euler(25,0,-12)*Quaternion.Euler(0,55,0);
             if(index==4) surface.transform.localRotation=Quaternion.Euler(40,0,-10)*Quaternion.Euler(0,index*39,0);
-            if(index==5) surface.transform.localRotation=SolarLayout.SaturnTilt*Quaternion.Euler(0,index*39,0);
+            if(index==5)
+            {
+                surface.transform.localRotation=SolarLayout.SaturnTilt*Quaternion.Euler(0,index*39,0);
+                surface.transform.localScale=Vector3.Scale(surface.transform.localScale,new Vector3(1,0.90f,1));
+            }
             surface.GetComponent<MeshFilter>().sharedMesh = SphereMesh();
             var material = appearance != null && appearance.surfaceMaterial != null ? appearance.surfaceMaterial : Surface(data, index);
             if (appearance != null && appearance.surfaceMaterial == null && appearance.albedoTexture != null)
@@ -292,7 +296,7 @@ namespace SolarExplorer
 
         private void CreateRings(Transform parent, float radius)
         {
-            const int segments = 256;
+            const int segments = 512;
             var vertices = new List<Vector3>();
             var uv = new List<Vector2>();
             var triangles = new List<int>();

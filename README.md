@@ -2,6 +2,8 @@
 
 A small Unity 6 project for exploring the Sun and eight planets in our solar system from a cinematic high overview. Larger mapped planets, a warm solar corona, glowing orbital guides, and a drifting asteroid belt sit against the Milky Way. Tap or click a world, glide into a close view, and explore its surface while reading a substantial NASA-based article. The scrollable information panel sits beside the world in landscape and below it in portrait.
 
+The **Galaxy** button opens an illustrated cosmic atlas: the Milky Way, a local stellar neighborhood with TRAPPIST-1 and Proxima Centauri, and a Local Group view with four neighboring galaxies. The seven TRAPPIST-1 planets and Proxima b support the same touch orbit, pinch zoom, reset, and scrollable articles as the original planets. Their surfaces are original artistic interpretations of confirmed worlds.
+
 ![Earth in the explorer HUD](Documentation/earth.png)
 
 ![Angled view of the solar system](Documentation/overview.png)
@@ -26,6 +28,7 @@ Use the **Built-in Render Pipeline** already implied by this project. The includ
 - A photographic 6000 × 3000 Milky Way panorama by ESO/S. Brunier, with a separate layer of soft stellar glints. Source photographs, procedural effects, and 3D geometry are rendered live; the concept mockup is not used as a flat background.
 - A mesh of 3,400 irregular asteroids, including foreground debris, slow cloud movement, and subtle traveling highlights on the orbital guides. Hover a world or its navigation button to highlight its guide and show targeting brackets.
 - Earth cloud and night-light maps, atmospheric rims, and textured Saturn rings with a planetary shadow.
+- Saturn opens in a closer, sunlit three-quarter view fitted to the projected ring ellipse. Its flattened globe has enhanced cloud-band contrast and subtle moving cloud detail; the rings have finer geometry, neutral ice tones, and light transmission. The supplied Saturn surface is 4096 × 2048 despite the provider's `8k_saturn` filename; its ring profile is 8192 pixels wide. Both retain their source resolution on desktop.
 - Tap/click a sphere, its name, or a bottom navigation button to focus it. The Sun is the first navigation entry. Swipe the navigation strip on narrow displays to reveal the remaining worlds.
 - Eased camera flights, damped scroll zoom, and left- or right-button drag to orbit a selected planet. The overview stays fixed at its chosen high/top angle. Camera travel locks gestures, selection, buttons, keyboard shortcuts, and article scrolling until arrival.
 - An original sci-fi HUD with a slim navigation bar, cut-corner glass panels, cyan targeting marks, Rajdhani headings, Barlow body text, compact statistics, and source links. The Sun, Earth, Jupiter, and Saturn have permanent overview labels; other names appear on hover.
@@ -46,6 +49,20 @@ Use the **Built-in Render Pipeline** already implied by this project. The includ
 - **Space / Pause:** stop or resume all world animation, including solar activity and asteroids.
 - **Smooth / Instant:** choose eased or immediate camera travel, independently of world animation.
 
+## Explore beyond the Solar System
+
+1. From the original scene, choose **Galaxy** to pull back to the Milky Way.
+2. Choose **Local Group** to see the Milky Way, Andromeda, Triangulum, and the Large and Small Magellanic Clouds. Tap a galaxy or its destination button to open its overview and article.
+3. Inside the Milky Way, tap the **Solar Neighborhood** marker or **Explore Nearby Stars**. Choose the Solar System, TRAPPIST-1, or Proxima Centauri.
+4. Inside TRAPPIST-1 or Proxima Centauri, tap a planet, its label, or its bottom destination button. The star is selectable too. Drag to orbit; spread two fingers to zoom in and pinch together to zoom out. Planet zoom-out stops at the arrival distance.
+5. **X**, the upper-left navigation button, or **Esc** moves back one atlas level. **Home** always restores the original Solar System. From the Local Group, X returns to the Solar System.
+
+Atlas maps and new system overviews can be rotated and zoomed within bounded limits. The original Solar System overview remains fixed. **Reset** restores each atlas view's arrival angle and distance. Scale changes use a brief fade between separately sized scenes, with camera travel and all controls locked until arrival. Smooth/Instant and Pause apply throughout. New system orbit guides disappear in planet close-ups; destination buttons remain available for switching worlds. NASA links stay at the very bottom of each scrollable article.
+
+![Illustrated Milky Way view](Documentation/milky-way.png)
+
+![Neighboring galaxies in the Local Group](Documentation/local-group.png)
+
 Phone portrait uses a world-above/article-below layout. Tablet portrait and landscape, phone landscape, and desktop windows are supported. Controls respect the device safe area. Touches that begin on UI stay with the UI until lifted; drags, pinches, canceled touches, and long holds do not accidentally select worlds.
 
 On iPhone/iPad, place one finger directly on the selected world and drag horizontally or vertically to rotate the view around it. The same gesture also works in empty space around the world. During approach, return, reset, or travel between planets, all interaction is locked. A finger that starts touching during travel stays ignored until it is lifted; begin a fresh gesture after arrival. Use two fingers to pinch, and Reset View to return to the original angle. Device rotation rebases a gesture to avoid carrying old screen coordinates into the new orientation.
@@ -56,10 +73,16 @@ Solar prominences are short, illustrative eruptions on 3.8–6.4 second cycles. 
 
 Edit `Assets/SolarExplorer/Resources/PlanetCatalog.json` to change descriptions, stats, colors, illustrative sizes, and rotation speeds. Keep the eight planets in solar order: their order also selects the corresponding bundled texture. The separate `sun` entry supplies its article and custom four-statistic grid. Each body has a `sections` array of heading/body pairs and one `sourceUrl`.
 
+`Resources/UniverseCatalog.json` contains galaxy, star-system, and exoplanet articles and their NASA source links. Appearance colors and illustrative globe sizes are stored separately from the displayed measured facts. The atlas starts with five galaxies and two additional star systems; expanding that set also requires updating its navigation and scene layouts.
+
 The code is separated by responsibility:
 
 - `SolarSystemBootstrap.cs`: scene creation, keyboard shortcuts, selection, and pause state.
 - `ExplorerInput.cs`: mouse/touch routing, world selection, and gesture ownership.
+- `UniverseExplorer.cs`: atlas destinations, scale transitions, and return to the Solar System.
+- `UniverseVisuals.cs`: cached galaxy artwork, star markers, exoplanet spheres, and their animation.
+- `UniverseUI.cs` / `UniverseCatalog.cs`: responsive atlas articles, navigation, selection labels, and catalog types.
+- `Resources/GalaxyDisk.shader`, `GalaxyStars.shader`, and `ExoplanetSurface.shader`: original procedural atlas artwork.
 - `SolarActivity.cs`: evolving prominence geometry and plasma flow.
 - `ExplorerCamera.cs`: overview framing, focus transitions, orbit, and zoom.
 - `SolarLayout.cs`: illustrative orbit shapes, planet positions, Sun size, and overview angle.
@@ -89,7 +112,9 @@ Change `SolarLayout.cs` to adjust the staged planet positions, decorative guide 
 
 This scene is an **illustrated 3D solar system, not a physical simulation**. Sizes, axial tilts, rotation rates, and planet placement are chosen for the cinematic composition. The elliptical paths are decorative browsing guides, not accurate orbits or traces through every staged planet position. Planets rotate in place and do not travel along the guides. The asteroid belt and scattered outer debris are illustrative. Solar System Scope's maps combine observational data and artistic adjustments, including filled gaps and enhanced color. Lighting, solar activity, and sky color grading are artistic. Only Saturn's rings are drawn, although the other giant planets also have rings.
 
-The solar system lies within the Milky Way galaxy. This starter covers our eight solar-system planets, not the galaxy's many other planetary systems. The Sun is a star; Pluto and other dwarf planets are outside this first version.
+The Solar System, TRAPPIST-1, and Proxima Centauri all lie within the Milky Way. The atlas includes eight confirmed exoplanets: TRAPPIST-1 b through h and Proxima b. Proxima b's radius is not directly measured; its rendered size is chosen for browsing. The Proxima scene is a featured destination, not an exhaustive inventory of reported companions. The Sun is a star; Pluto and other dwarf planets are outside this version.
+
+Galaxy shapes, star placements, orientations, and sizes are illustrative. The Local Group has many more galaxies than the five featured here; this is not a measured three-dimensional star chart. Neighboring galaxies have information views without invented confirmed planetary systems. Exoplanet colors, terrain, illumination, and idle rotation are imagined, not resolved observations or evidence of water, an atmosphere, or life. Numerical facts are rounded from the NASA sources in the catalog, reviewed October 8, 2026.
 
 Numeric values are rounded reference values from the [NASA Planetary Fact Sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/), checked October 7, 2026 against its March 18, 2025 table. Diameter is equatorial. Orbital period uses the table's definition, not an independently calculated sidereal period. Gravity includes rotation; for giant planets it is defined at the 1-bar atmospheric level. See the [fact sheet notes](https://nssdc.gsfc.nasa.gov/planetary/factsheet/planetfact_notes.html).
 
@@ -97,17 +122,23 @@ The nine articles contain 59 sections written as original summaries of NASA Scie
 
 ## Validation
 
-Use **Solar Explorer > Validate Project** to check all nine catalog entries, articles, shaders, fonts, maps, scene, and build scene list.
+Use **Solar Explorer > Validate Project** to check the solar and universe catalogs, articles, shaders, fonts, maps, scene, and build scene list.
 
 **Solar Explorer > Run Scene Checks and Previews** enters Play Mode and writes previews into `Logs/Previews`. It also checks nine overview round trips, all 72 directed body-to-body camera routes, travel input locks, body collisions, focus framing, zoom limits, reset, direct selection, navigation buttons, the X, article drag scrolling, the final source-link position, and touch gesture ownership. It stops Play Mode when finished. Batch invocation: `-batchmode -executeMethod SolarExplorer.Editor.SceneSmokeChecks.Run` (without `-quit`; the runner exits itself).
 
 Preview sizes are 1440 × 900, 1920 × 1080, 1024 × 640, phone portrait 390 × 844, phone landscape 844 × 390, tablet landscape 1024 × 768, and tablet portrait 768 × 1024. Phone checks include inset safe areas. Touch tests feed the complete production touch-to-camera path, including fingers starting directly on all nine bodies, pinch, reset, UI ownership, locked travel, arrival, and a fixed overview; UI checks exercise Unity's actual scroll and button handlers. These are editor simulations, not physical-device testing.
+
+**Solar Explorer > Run Universe Checks and Previews** exercises the atlas at those same seven sizes and writes images into `Logs/UniversePreviews`. It checks all five galaxies, the solar-neighborhood marker, both new systems, all eight exoplanets, direct body selection, touch rotation/pinch, capped zoom-out, reset, source scrolling, safe-area controls, guide visibility, travel locks, collision clearance, pause, instant travel, and restoration of the original Solar System. Batch entry point: `SolarExplorer.Editor.UniverseSmokeChecks.Run`, without `-quit`.
+
+**Atlas validation passed October 8, 2026:** all seven layouts, all 15 shaders, and the checks above. The original Solar System suite also passed again, including all 72 directed camera routes, Saturn framing, nine-world touch controls, and live animation/pause checks. Source files and metadata were byte-compared with the validated copy. Physical-device testing remains pending.
 
 Animation checks verify eight planet rotations, Sun rotation and changing prominence geometry, visibly moving asteroid renders, a frozen paused frame, resume, and independence from instant-camera mode. Set `SOLAR_CAPTURE_MOTION=1` to capture 180 full-HD overview frames at a simulated 30 fps. This is an animation preview, not a performance benchmark.
 
 Validation is run in a temporary copy so the user's working Editor can remain open. Device builds, native touch feel, browser handoff, memory use, thermal behavior, and frame rate still require the acceptance checks in `TESTING.md`.
 
 **Passed in Unity 6000.3.22f1 on October 8, 2026:** all seven layouts and their nine articles, nine selection rays per layout, all 72 directed camera routes, gesture and UI checks, animation/pause checks, and shader compilation. A separate Sun render check changed only the plasma clock while holding sphere rotation fixed and measured over 90,000 visibly changed pixels, confirming surface activity beyond simple spin. **Solar Explorer > Render Sun Activity Preview** captures six seconds of that live effect into `Logs/Previews/SolarMotion`.
+
+Saturn's framing checks verify that the complete rings fit clear of the information panel, the globe has a larger default view, inspection zoom visibly moves closer, and zoom-out stops at the initial focus distance. The scene checks also save `saturn-detail-*.png` previews at an additional 1.65× zoom.
 
 ![Selectable Sun and its article](Documentation/sun.png)
 

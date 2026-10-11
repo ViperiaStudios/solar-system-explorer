@@ -16,7 +16,7 @@ namespace SolarExplorer
             {
                 for(int x=-1;x<=1;x+=2) for(int y=-1;y<=1;y+=2)
                 {
-                    Vector2 corner=r.center+new Vector2(x,y)*radius;
+                    Vector2 corner=r.center+new Vector2(x*r.width,y*r.height)*0.5f;
                     Line(vh,corner,corner-new Vector2(x*17,0),1.5f);
                     Line(vh,corner,corner-new Vector2(0,y*17),1.5f);
                 }

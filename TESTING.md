@@ -18,6 +18,7 @@ Run in Unity 6000.3.22f1 with the supplied Built-in Render Pipeline settings.
 - Select Earth, then try selecting Saturn and Mercury during travel. Earth must remain the destination. After arrival, selecting Saturn starts a new locked flight; subsequent input must again be ignored until arrival.
 - Press 1 through 8 and both arrow keys. Press 0 to select the Sun. Left arrow from overview selects the Sun; right arrow from overview selects Mercury.
 - Each selected planet is visible to the left of the panel. Saturn's rings fit at the default zoom.
+- Select Saturn from the overview. Its sunlit globe and complete rings should fill the viewing area noticeably more than before. Confirm the oblate shape, cloud bands, bright and dark ring divisions, and planetary shadow. Pinch or scroll closer to inspect it; zoom back out to its new default view, and use Reset View to restore the angle. Repeat in phone and tablet portrait/landscape.
 - Right-drag to orbit, including above and below the planet, and test both scroll zoom limits.
 - Press Esc and Home after arriving at a focused view to return to the overview. During approach, return, or travel between worlds, these keys and all other input must be ignored. Controls resume after arrival.
 - Resize between 1440 × 900, 1920 × 1080, and 1024 × 640. Planets fit the overview; navigation and panel content remain usable.
@@ -61,6 +62,23 @@ These require a physical device; simulated editor checks do not replace them.
 - Background and resume the app during a gesture; the next touch must start cleanly.
 - Test native safe areas, home indicator, external-source browser handoff, and rotation on the actual target devices.
 - Profile GPU/frame time, memory, and temperature over a sustained session. Mobile textures use ASTC 6×6 capped at 4K; verify import and device support. Tune effects after measurements if needed.
+
+## Universe atlas
+
+Run **Solar Explorer > Run Universe Checks and Previews** for the automated seven-layout checks. Repeat the following on desktop and physical phone/tablet builds:
+
+- Choose Galaxy from the original scene. During the scale transition, drag, pinch, scroll, tap destinations, and try Esc/Home. Input must stay locked until the Milky Way arrives; a finger held from travel must be lifted before beginning a new gesture.
+- Inspect the Milky Way from above, rotate to a lower angle, zoom within its limits, and reset. Its stellar disk, dust lanes, and solar-neighborhood beacon stay visible. The rendering is illustrative.
+- Open Local Group and select all five galaxies, using both the scene and navigation strip. The dwarf galaxies must have soft edges without visible square planes. X/Up returns to the Local Group; Home restores the original Solar System.
+- From the Milky Way, tap Solar Neighborhood. All three star destinations open correctly. The Solar System destination restores the original scene and its previous overview angle.
+- Open TRAPPIST-1, select its star and all seven planets, and switch between them. Open Proxima Centauri and Proxima b. Every article title and fact block matches its selection. Exoplanet artwork is clearly identified as artistic.
+- Drag and pinch each focused exoplanet; zoom-out stops at its initial arrival distance. Reset restores its starting angle and distance. The persistent X returns to the system overview; orbital guides disappear in close-ups and return with the overview.
+- Tap another visible body while focused. Use the destination strip when another body is off screen. A drag or pinch must never become a selection on finger release.
+- On every level, scroll to the final NASA button. Article gestures must not rotate the map. Inspect header controls, X, and navigation at all four phone/tablet orientations and actual safe areas.
+- Pause/resume stars and planet spin. Switch Smooth/Instant and navigate between scales. Instant transitions must leave no black curtain or stuck input lock.
+- Repeatedly leave and reenter the atlas, including from a selected solar planet. Confirm no duplicate UI, lost solar sky, duplicate galaxies, or growing object counts after the same views have been cached.
+- Neighboring-galaxy articles must not offer invented confirmed planet destinations. Galaxy spacing and new world surfaces must not be presented as measured geography.
+- Profile memory and transparent-star rendering after visiting every destination. Editor screenshots verify rendering and behavior, not sustained mobile performance.
 
 ## Build
 

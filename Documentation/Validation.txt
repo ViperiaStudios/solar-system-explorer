@@ -28,3 +28,45 @@ SOLAR_PLASMA_PASSED: 92539 changed rendered pixels with fixed sphere rotation.
 SOLAR_LOOPS_PASSED: 4938 changed pixels in 0.45 seconds with fixed sphere/surface; identical paused render.
 SOLAR_PREVIEW_CAPTURED: 180 frames of live Sun activity at 1920x1080.
 SOLAR_SCENE_CHECKS_PASSED
+
+Saturn visual and framing update: 2026-10-08
+Camera flights verified: nine round trips, all 72 body pairs, travel input lock, no body intersections and reduced motion.
+SATURN_FOCUS_PASSED: 1440x900; visible rings, body diameter 0.336, closer inspection zoom, capped zoom-out, 4K surface and 8K rings.
+LIVE_MOTION_PASSED: eight rotating planets, rotating Sun, 81630 changed asteroid pixels over 3 seconds, exact paused frame, resume and instant-camera independence.
+SATURN_FOCUS_PASSED: 1920x1080; visible rings, body diameter 0.336, closer inspection zoom, capped zoom-out, 4K surface and 8K rings.
+SATURN_FOCUS_PASSED: 1024x640; visible rings, body diameter 0.336, closer inspection zoom, capped zoom-out, 4K surface and 8K rings.
+SATURN_FOCUS_PASSED: 390x844; visible rings, body diameter 0.192, closer inspection zoom, capped zoom-out, 4K surface and 8K rings.
+SATURN_FOCUS_PASSED: 844x390; visible rings, body diameter 0.336, closer inspection zoom, capped zoom-out, 4K surface and 8K rings.
+SATURN_FOCUS_PASSED: 1024x768; visible rings, body diameter 0.336, closer inspection zoom, capped zoom-out, 4K surface and 8K rings.
+SATURN_FOCUS_PASSED: 768x1024; visible rings, body diameter 0.194, closer inspection zoom, capped zoom-out, 4K surface and 8K rings.
+SOLAR_SCENE_CHECKS_PASSED
+All seven layout, article, touch and shader checks passed again. Physical-device testing remains pending.
+
+Universe atlas expansion: 2026-10-08, Unity 6000.3.22f1
+SOLAR_VALIDATION_PASSED: solar and universe catalogs, all 15 shaders, scene and build list.
+UNIVERSE_LAYOUT_PASSED: 1440x900
+UNIVERSE_LAYOUT_PASSED: 1920x1080
+UNIVERSE_LAYOUT_PASSED: 1024x640
+UNIVERSE_LAYOUT_PASSED: 390x844, inset safe area
+UNIVERSE_LAYOUT_PASSED: 844x390, inset safe area
+UNIVERSE_LAYOUT_PASSED: 1024x768
+UNIVERSE_LAYOUT_PASSED: 768x1024
+UNIVERSE_CHECKS_PASSED
+Each layout covers five galaxies, solar-neighborhood selection, TRAPPIST-1's seven planets,
+Proxima b, touch orbit and pinch, capped zoom-out, reset, final source scrolling,
+safe-area controls, close-up guide visibility, travel input locks, camera collision
+clearance, animation/pause, instant transitions and original Solar System restoration.
+Reviewed desktop and phone renders; corrected dwarf-galaxy edge clipping, system framing,
+world label size and exoplanet surface shading. New artwork is illustrative.
+
+Original Solar System regression after atlas integration:
+Camera flights verified: nine round trips, all 72 body pairs, travel locks and collision clearance.
+SATURN_FOCUS_PASSED, INTERACTION_LAYOUT_PASSED, NATIVE_TOUCH_ORBIT_PASSED: all seven layouts.
+LIVE_MOTION_PASSED: eight planets and Sun rotate, solar loops change, 81468 changed asteroid
+pixels over 3 seconds, exact paused frame, resume and instant-camera independence.
+SOLAR_SCENE_CHECKS_PASSED
+The motion test's Sun/belt lookups were updated for the new Solar System world parent.
+No remaining C# errors, shader errors or exceptions in either final validation log.
+All source scripts, shaders, catalogs and metadata match the isolated validated copy.
+Physical iPhone/iPad/Android testing, sustained performance and signed builds remain pending.
+No ZIP archive was regenerated.

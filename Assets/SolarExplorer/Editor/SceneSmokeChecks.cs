@@ -128,7 +128,14 @@ namespace SolarExplorer.Editor
                     Require(Vector2.Distance(p,explorer.CameraRig.FocusViewport)<0.02f,"Focus framing: "+i);
                     Require(explorer.Interface.GetComponentInChildren<Text>(true)!=null,"UI missing.");
                     InteractionChecks.Article(explorer,overlayCamera,safe);
+                    if(i==5) CheckSaturnFraming(explorer,camera);
                     Capture(camera,texture,Path.Combine(folder,explorer.Bodies[i].Data.name.ToLowerInvariant()+"-"+dimensions.x+".png"));
+                    if(i==5)
+                    {
+                        explorer.CameraRig.ZoomBy(1.65f); explorer.CameraRig.AdvanceMotion(1);
+                        Capture(camera,texture,Path.Combine(folder,"saturn-detail-"+dimensions.x+".png"));
+                        explorer.CameraRig.ResetView(); explorer.CameraRig.Snap();
+                    }
                 }
                 InteractionChecks.Controls(explorer,overlayCamera);
                 InteractionChecks.NativeTouchOrbit(explorer,overlayCamera);
@@ -209,8 +216,8 @@ namespace SolarExplorer.Editor
         private void CheckLiveMotion(SolarSystemBootstrap explorer,Camera camera,RenderTexture target,string folder)
         {
             explorer.Overview(); explorer.CameraRig.Snap(); explorer.RefreshVisuals();
-            var sun=explorer.transform.Find("Sun");
-            var belt=explorer.transform.Find("Asteroid belt").gameObject;
+            var sun=explorer.SolarWorld.transform.Find("Sun");
+            var belt=explorer.SolarWorld.transform.Find("Asteroid belt").gameObject;
             var material=belt.GetComponent<Renderer>().sharedMaterial;
             var rotations=new Quaternion[8];
             for(int i=0;i<8;i++) rotations[i]=explorer.Planets[i].Surface.localRotation;
@@ -294,6 +301,34 @@ namespace SolarExplorer.Editor
             var image=new Texture2D(target.width,target.height,TextureFormat.RGB24,false);
             image.ReadPixels(new Rect(0,0,target.width,target.height),0,0); image.Apply();
             File.WriteAllBytes(path,image.EncodeToPNG()); RenderTexture.active=previous; Destroy(image);
+        }
+
+        private static void CheckSaturnFraming(SolarSystemBootstrap explorer,Camera camera)
+        {
+            var rig=explorer.CameraRig; var saturn=explorer.Planets[5]; float radius=saturn.Data.visualRadius;
+            Rect freeRegion=rig.Portrait?Rect.MinMaxRect(0.025f,0.49f,0.975f,0.83f):Rect.MinMaxRect(0.015f,0.14f,0.65f,0.86f);
+            for(int sample=0;sample<128;sample++)
+            {
+                float angle=sample*Mathf.PI*2/128;
+                Vector3 ring=SolarLayout.SaturnTilt*new Vector3(Mathf.Cos(angle),0,Mathf.Sin(angle))*radius*2.3f;
+                Vector3 point=camera.WorldToViewportPoint(saturn.transform.position+ring);
+                Require(point.z>0 && freeRegion.Contains(point),"Saturn's complete rings must fit clear of its article and controls.");
+            }
+            Vector3 center=camera.WorldToViewportPoint(saturn.transform.position);
+            Vector3 edge=camera.WorldToViewportPoint(saturn.transform.position+camera.transform.up*radius);
+            float diameter=Mathf.Abs(edge.y-center.y)*2;
+            Require(diameter>(rig.Portrait?0.175f:0.31f),"Saturn must have a substantially closer default view.");
+            Vector3 initial=camera.transform.position;
+            float originalDistance=Vector3.Distance(initial,saturn.transform.position);
+            rig.ZoomBy(1.65f); rig.AdvanceMotion(1);
+            Require(Vector3.Distance(camera.transform.position,saturn.transform.position)<originalDistance*0.63f,"Saturn's inspection zoom must visibly move closer.");
+            rig.ZoomBy(0.001f); rig.AdvanceMotion(1);
+            Require(rig.Zoom==1 && Vector3.Distance(initial,camera.transform.position)<0.02f,"Saturn zoom-out must return to, and stop at, its closer default view.");
+            rig.ResetView(); rig.Snap();
+            // The provider's 8k_saturn filename contains a 4096-wide source image.
+            Require(Resources.Load<Texture2D>("Textures/8k_saturn").width>=4096,"Saturn must keep its full-resolution surface map.");
+            Require(Resources.Load<Texture2D>("Textures/8k_saturn_ring_alpha").width>=8192,"Saturn must keep its detailed ring profile.");
+            Debug.Log("SATURN_FOCUS_PASSED: "+camera.pixelWidth+"x"+camera.pixelHeight+"; visible rings, body diameter "+diameter.ToString("F3")+", closer inspection zoom, capped zoom-out, 4K surface and 8K rings.");
         }
 
         private static void CheckCinematicFraming(SolarSystemBootstrap explorer,Camera camera)

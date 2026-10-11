@@ -38,7 +38,7 @@ namespace SolarExplorer.Editor
                 Require(Uri.TryCreate(body.sourceUrl,UriKind.Absolute,out var source) && source.Scheme=="https" && source.Host=="science.nasa.gov","Unexpected article source.");
             }
             Require(catalog.sun.statistics!=null && catalog.sun.statistics.Length==4,"Sun needs its own statistics.");
-            foreach(var name in new[] { "PlanetSurface","SpaceUnlit","SunGlow","PlanetRings","GalaxySky","Atmosphere","EarthClouds","OrbitGlow","AsteroidSurface","CinematicBloom","SolarFilament","StarGlint" })
+            foreach(var name in new[] { "PlanetSurface","SpaceUnlit","SunGlow","PlanetRings","GalaxySky","Atmosphere","EarthClouds","OrbitGlow","AsteroidSurface","CinematicBloom","SolarFilament","StarGlint","GalaxyDisk","GalaxyStars","ExoplanetSurface" })
             {
                 var shader=Resources.Load<Shader>(name);
                 Require(shader!=null,"Missing shader: "+name);
@@ -50,7 +50,17 @@ namespace SolarExplorer.Editor
             Require(Resources.Load<Font>("Fonts/Rajdhani-SemiBold")!=null,"Missing HUD font.");
             foreach(var name in SpaceVisuals.TextureNames.Concat(new[]{"8k_earth_clouds","8k_earth_nightmap","8k_saturn_ring_alpha","eso0932a_milky_way","2k_earth_normal_map","2k_earth_specular_map"}))
                 Require(Resources.Load<Texture2D>("Textures/"+name)!=null,"Missing texture: "+name);
-            Debug.Log("SOLAR_VALIDATION_PASSED: catalog, shaders, scene asset and build list.");
+            var universe=UniverseCatalog.Load();
+            Require(universe.systems[0].planets.Length==7,"TRAPPIST-1 must include seven confirmed planets.");
+            var entries=universe.galaxies.Concat(new[]{universe.localGroup,universe.neighborhood})
+                .Concat(universe.systems.Select(s=>s.article)).Concat(universe.systems.SelectMany(s=>s.planets.Select(p=>p.article))).ToArray();
+            Require(entries.Select(e=>e.id).Distinct().Count()==entries.Length,"Atlas IDs must be unique.");
+            foreach(var entry in entries)
+            {
+                Require(entry.sections!=null && entry.sections.Length>=2 && !string.IsNullOrWhiteSpace(entry.summary),"Incomplete atlas article.");
+                Require(Uri.TryCreate(entry.sourceUrl,UriKind.Absolute,out var url) && url.Scheme=="https" && url.Host=="science.nasa.gov","Unexpected atlas source URL.");
+            }
+            Debug.Log("SOLAR_VALIDATION_PASSED: solar and universe catalogs, shaders, scene asset and build list.");
         }
 
         private static void Require(bool condition,string message)

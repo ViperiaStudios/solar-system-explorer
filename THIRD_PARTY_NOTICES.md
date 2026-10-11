@@ -75,3 +75,25 @@ Article references (original summaries, not copied website text):
 - https://science.nasa.gov/neptune/neptune-facts/
 
 Articles were reviewed on October 8, 2026. Planetary numeric statistics were checked October 7, 2026 against NASA's March 18, 2025 table. The Sun uses separate rounded statistics from NASA Science. Descriptions and article sections are original summaries. No NASA endorsement is implied. Each in-app article ends with a link to its NASA source.
+
+## Universe atlas and exoplanets
+
+The added galaxy disks, point-star meshes, dwarf-galaxy clouds, star markers, and exoplanet surfaces are original procedural artwork covered by this repository's MIT license. No external galaxy models or exoplanet surface images were downloaded for this expansion. These appearances are illustrative and are not measured reconstructions. The existing fonts retain their separate licenses above.
+
+`Assets/SolarExplorer/Resources/UniverseCatalog.json` contains original short summaries and rounded reference facts reviewed October 8, 2026. Each article has one final NASA source link. Additional source pages used to cross-check facts are listed here:
+
+- [Galaxies](https://science.nasa.gov/universe/galaxies/)
+- [Large-scale structures and the Local Group](https://science.nasa.gov/universe/galaxies/large-scale-structures/)
+- [Webb: galaxies over time](https://science.nasa.gov/mission/webb/galaxies-over-time/)
+- [Andromeda / Messier 31](https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-31/)
+- [Triangulum / Messier 33](https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-33/)
+- [The Large Magellanic Cloud](https://science.nasa.gov/earth/earth-observatory/the-galaxy-next-door/)
+- [The Small Magellanic Cloud](https://science.nasa.gov/photojournal/little-galaxy-explored/)
+- [Exoplanets](https://science.nasa.gov/exoplanets/)
+- [TRAPPIST-1](https://science.nasa.gov/exoplanets/trappist1/)
+- [Webb observations of TRAPPIST-1](https://science.nasa.gov/mission/webb/science-overview/science-explainers/what-is-webb-revealing-about-the-trappist-1-system/)
+- [TRAPPIST-1 b](https://science.nasa.gov/exoplanet-catalog/trappist-1-b/), [c](https://science.nasa.gov/exoplanet-catalog/trappist-1-c/), [d](https://science.nasa.gov/exoplanet-catalog/trappist-1-d/), [e](https://science.nasa.gov/exoplanet-catalog/trappist-1-e/), [f](https://science.nasa.gov/exoplanet-catalog/trappist-1-f/), [g](https://science.nasa.gov/exoplanet-catalog/trappist-1-g/), [h](https://science.nasa.gov/exoplanet-catalog/trappist-1-h/)
+- [Proxima b's discovery](https://science.nasa.gov/universe/exoplanets/eso-discovers-earth-size-planet-in-habitable-zone-of-nearest-star/)
+- [Proxima Centauri b catalog entry](https://science.nasa.gov/exoplanet-catalog/proxima-centauri-b/)
+
+The atlas includes confirmed Milky Way exoplanets only. It does not label extragalactic candidates as confirmed discoveries, and does not infer a measured surface, atmosphere, or habitability from a planet's orbit. Proxima b's rendered radius is an artistic choice, not a direct measurement. Original summaries and factual references do not imply NASA endorsement.

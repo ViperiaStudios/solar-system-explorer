@@ -15,10 +15,12 @@ namespace SolarExplorer
         public const int SunIndex = 8;
         public ExplorerCamera CameraRig { get; private set; }
         public ExplorerUI Interface { get; private set; }
+        public UniverseExplorer Universe { get; private set; }
+        public GameObject SolarWorld { get; private set; }
         public int SelectedIndex { get; private set; } = -1;
         public bool Paused { get; private set; }
         public bool OrbitsVisible { get; private set; } = true;
-        public bool InteractionLocked => CameraRig!=null && CameraRig.IsTransitioning;
+        public bool InteractionLocked => (CameraRig!=null && CameraRig.IsTransitioning) || (Universe!=null && Universe.IsCrossing);
         public int HoveredIndex => SelectedIndex>=0?-1:(uiHover>=0?uiHover:worldHover);
         public float OrbitOpacity => visuals.OrbitOpacity;
         private int uiHover=-1,worldHover=-1;
@@ -28,16 +30,18 @@ namespace SolarExplorer
         {
             Application.targetFrameRate = 60;
             var catalog = PlanetCatalog.Load();
+            SolarWorld=new GameObject("Solar System world"); SolarWorld.transform.SetParent(transform,false);
+            Transform world=SolarWorld.transform;
             visuals = new SpaceVisuals();
-            visuals.CreateStars(transform);
-            var sun = visuals.CreateSun(transform, catalog.sun, sunVisualPrefab);
-            visuals.CreateDebris(transform);
+            visuals.CreateStars(world);
+            var sun = visuals.CreateSun(world, catalog.sun, sunVisualPrefab);
+            visuals.CreateDebris(world);
             Planets = new PlanetBody[catalog.planets.Length];
             for (int i = 0; i < Planets.Length; i++)
             {
                 var appearance = appearances != null && i < appearances.Length ? appearances[i] : null;
-                Planets[i] = visuals.CreatePlanet(catalog.planets[i], i, SolarLayout.Position(i), transform, appearance);
-                visuals.CreateOrbit(SolarLayout.OrbitRadii[i], catalog.planets[i].Accent, transform);
+                Planets[i] = visuals.CreatePlanet(catalog.planets[i], i, SolarLayout.Position(i), world, appearance);
+                visuals.CreateOrbit(SolarLayout.OrbitRadii[i], catalog.planets[i].Accent, world);
             }
             Bodies = new PlanetBody[9];
             System.Array.Copy(Planets, Bodies, Planets.Length);
@@ -64,12 +68,13 @@ namespace SolarExplorer
             }
             Interface = gameObject.AddComponent<ExplorerUI>();
             Interface.Initialize(this, view);
+            Universe=gameObject.AddComponent<UniverseExplorer>(); Universe.Initialize(this,view);
             gameObject.AddComponent<ExplorerInput>().Initialize(this);
         }
 
         public void SelectPlanet(int index)
         {
-            if(InteractionLocked) return;
+            if(InteractionLocked || (Universe!=null && Universe.Active)) return;
             if (index < 0 || index >= Bodies.Length) return;
             uiHover=worldHover=-1;
             SelectedIndex = index;
@@ -80,6 +85,7 @@ namespace SolarExplorer
         public void Overview()
         {
             if(InteractionLocked) return;
+            if(Universe!=null && Universe.Active) { Universe.Back(); return; }
             uiHover=worldHover=-1;
             SelectedIndex = -1;
             CameraRig.Overview();
@@ -104,6 +110,13 @@ namespace SolarExplorer
 
         private void Update()
         {
+            if(Universe!=null && Universe.Active)
+            {
+                if(Input.GetKeyDown(KeyCode.Escape)) Universe.Back();
+                if(Input.GetKeyDown(KeyCode.Home)) Universe.Home();
+                if(Input.GetKeyDown(KeyCode.Space)) TogglePause();
+                AdvanceWorldAnimation(Time.unscaledDeltaTime); worldHover=-1; return;
+            }
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Home)) Overview();
             if (Input.GetKeyDown(KeyCode.Space)) TogglePause();
             for (int i=0;i<8;i++)
@@ -131,11 +144,12 @@ namespace SolarExplorer
             if (Paused || deltaTime <= 0) return;
             foreach (var planet in Planets) planet.AdvanceAnimation(deltaTime);
             visuals.AdvanceAmbience(deltaTime, false);
+            Universe?.AdvanceAnimation(deltaTime);
         }
 
         public void ToggleView()
         {
-            if(InteractionLocked) return;
+            if(InteractionLocked || (Universe!=null && Universe.Active)) return;
             if (SelectedIndex >= 0) Overview();
             CameraRig.ToggleOverhead();
             Interface.RefreshControls();
@@ -143,7 +157,7 @@ namespace SolarExplorer
 
         public void ToggleOrbits()
         {
-            if(InteractionLocked) return;
+            if(InteractionLocked || (Universe!=null && Universe.Active)) return;
             OrbitsVisible = !OrbitsVisible;
             visuals.SetOrbitsVisible(OrbitsVisible);
             Interface.RefreshControls();
@@ -155,6 +169,14 @@ namespace SolarExplorer
         {
             visuals.SetHoveredPlanet(HoveredIndex);
             visuals.SetOverviewVisibility(1-CameraRig.FocusBlend);
+        }
+        public void RestoreSolarOverview()
+        {
+            SelectedIndex=-1; uiHover=worldHover=-1;
+            SolarWorld.SetActive(true); Interface.Canvas.gameObject.SetActive(true); Interface.ShowOverview();
+            CameraRig.GetComponent<Camera>().clearFlags=CameraClearFlags.Skybox;
+            CameraRig.GetComponent<Camera>().farClipPlane=1400;
+            CameraRig.RevealSolarSystem();
         }
         private void LateUpdate() { RefreshVisuals(); }
         private void OnDestroy() { if (visuals != null) visuals.Dispose(); }

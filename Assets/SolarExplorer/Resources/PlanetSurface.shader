@@ -76,14 +76,27 @@ Shader "SolarExplorer/PlanetSurface"
                     float hv=dot(tex2D(_MainTex,uv+float2(0,_MainTex_TexelSize.y*2)).rgb,float3(0.25,0.55,0.2));
                     n=normalize(n-tangent*(hu-h)*2.7-bitangent*(hv-h)*2.7);
                 }
+                bool saturn=_Kind>4.5 && _Kind<5.5;
+                if(saturn && _UseTexture>0.5)
+                {
+                    // Preserve the mapped belts, with restrained local contrast and
+                    // filtered, gently advecting cloud structure for close inspection.
+                    float3 surrounding=(tex2D(_MainTex,uv+float2(0,0.004)).rgb+tex2D(_MainTex,uv-float2(0,0.004)).rgb)*0.5;
+                    albedo=max(0,albedo+(albedo-surrounding)*0.55);
+                    float turbulence=fbm(p*float3(48,8,48)+float3(_AmbientTime*0.025,0,0));
+                    float latitude=p.y*190+turbulence*2.5;
+                    float resolved=1-smoothstep(0.4,1.8,fwidth(latitude));
+                    albedo*=1+(sin(latitude)*0.022+(turbulence-0.5)*0.035)*resolved;
+                }
                 float3 sun=normalize(normalize(-i.world)+float3(-0.22,0.65,-0.2)*_Overview);
                 float ndl=dot(n,sun),day=saturate(ndl);
                 float3 fill=float3(0.012,0.019,0.035)+float3(0.009,0.014,0.025)*_Overview;
-                if(_Kind>4.5 && _Kind<5.5) fill+=float3(0.04,0.027,0.014);
-                float3 lighting=fill+float3(1.35,1.12,0.88)*pow(day,0.90);
-                if(_Kind>4.5 && _Kind<5.5)
+                if(saturn) fill+=float3(0.028,0.030,0.034);
+                float3 lightColor=saturn?float3(1.26,1.20,1.10):float3(1.35,1.12,0.88);
+                float3 lighting=fill+lightColor*pow(day,0.90);
+                if(saturn)
                 {
-                    albedo*=float3(1.1,0.92,0.72);
+                    albedo*=float3(1.03,1.04,1.05);
                     float3 axis=normalize(UnityObjectToWorldDir(float3(0,1,0)));
                     float3 center=unity_ObjectToWorld._m03_m13_m23;
                     float3 relative=i.world-center,lightRay=normalize(-i.world);

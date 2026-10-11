@@ -9,18 +9,24 @@ namespace SolarExplorer
         public bool ReduceMotion { get; set; }
         public bool IsOverhead { get; private set; }
         public bool IsTransitioning => elapsed < duration;
+        public bool MapMode { get; private set; }
         public float TransitionProgress => duration <= 0 ? 1 : Mathf.Clamp01(elapsed / duration);
-        public float FocusBlend => current.frame / 0.34f;
+        public float FocusBlend => MapMode?0:current.frame / 0.34f;
         private Camera view;
         private SolarSystemBootstrap system;
         private float yaw, pitch = 18, zoom = 1;
         private float overviewYaw = 0, overviewPitch = SolarLayout.OverviewPitch, overviewZoom = 1;
         private float elapsed, duration;
         public bool Portrait => view != null && view.aspect < 1.2f;
-        public float Zoom => Target != null ? zoom : overviewZoom;
+        public float Zoom => Target != null || MapMode ? zoom : overviewZoom;
         public Vector2 FocusViewport => Portrait ? new Vector2(0.5f,0.66f) : new Vector2(0.33f,0.5f);
         private Pose current, departure;
         private readonly System.Collections.Generic.List<Vector3> framingPoints=new System.Collections.Generic.List<Vector3>(128);
+        private const float SaturnYaw=-205, SaturnPitch=15;
+        private Vector3 mapPivot;
+        private float mapRadius,mapYaw,mapPitch;
+        private bool mapPlanet,scaleDeparture;
+        private Pose scaleDestination;
 
         private struct Pose
         {
@@ -33,6 +39,7 @@ namespace SolarExplorer
 
         public void Focus(PlanetBody planet)
         {
+            MapMode=false;
             if (Target == planet) return;
             Target = planet;
             DefaultFocusPose();
@@ -44,14 +51,16 @@ namespace SolarExplorer
             var planet = Target;
             Vector3 awayFromSun = planet.transform.position.normalized;
             yaw = Mathf.Atan2(awayFromSun.x, awayFromSun.z) * Mathf.Rad2Deg - 24;
-            if(planet.Index==5) yaw=-65;
-            pitch = planet.Index == 5 ? 42 : 52;
+            if(planet.Index==5) yaw=SaturnYaw;
+            pitch = planet.Index == 5 ? SaturnPitch : 52;
             zoom = 1;
         }
 
         public void ResetView()
         {
-            if(IsTransitioning || Target==null) return;
+            if(IsTransitioning || (system!=null && system.InteractionLocked)) return;
+            if(MapMode) { yaw=mapYaw; pitch=mapPitch; zoom=1; BeginTravel(0.75f); return; }
+            if(Target==null) return;
             DefaultFocusPose();
             BeginTravel(0.75f);
         }
@@ -95,15 +104,39 @@ namespace SolarExplorer
 
         public void Orbit(Vector2 deltaDegrees)
         {
-            if(IsTransitioning || Target==null) return;
-            yaw+=deltaDegrees.x; pitch=Mathf.Clamp(pitch-deltaDegrees.y,-85,85);
+            if(IsTransitioning || (system!=null && system.InteractionLocked) || (!MapMode && Target==null)) return;
+            yaw+=deltaDegrees.x; pitch=Mathf.Clamp(pitch-deltaDegrees.y,MapMode && !mapPlanet?12:-85,85);
         }
 
         public void ZoomBy(float ratio)
         {
-            if(IsTransitioning || Target==null) return;
+            if(IsTransitioning || (system!=null && system.InteractionLocked) || (!MapMode && Target==null)) return;
             if (ratio <= 0 || float.IsNaN(ratio) || float.IsInfinity(ratio)) return;
-            zoom=Mathf.Clamp(zoom/ratio,0.35f,1);
+            zoom=Mathf.Clamp(zoom/ratio,MapMode && !mapPlanet?0.55f:0.35f,MapMode && !mapPlanet?1.6f:1);
+        }
+
+        public void BeginScaleDeparture()
+        {
+            MapMode=true; Target=null; scaleDeparture=true;
+            scaleDestination=current; scaleDestination.distance*=2.2f;
+            BeginTravel(0.7f);
+        }
+
+        public void ShowMap(Vector3 pivot,float radius,Vector2 angle,bool planet,bool reveal=false,bool outward=false)
+        {
+            MapMode=true; scaleDeparture=false; Target=null; mapPivot=pivot; mapRadius=radius;
+            mapPitch=pitch=angle.x; mapYaw=yaw=angle.y; mapPlanet=planet; zoom=1;
+            if(reveal)
+            {
+                current=Destination(); current.distance*=outward?0.65f:1.5f; ApplyPose();
+            }
+            BeginTravel(reveal?1.25f:1.5f);
+        }
+
+        public void RevealSolarSystem()
+        {
+            MapMode=false; scaleDeparture=false; Target=null;
+            current=Destination(); current.distance*=1.6f; ApplyPose(); BeginTravel(1.25f);
         }
 
         // Editor checks sample the same motion used at runtime.
@@ -145,9 +178,17 @@ namespace SolarExplorer
             Vector3 position=current.pivot+current.rotation*new Vector3(current.distance*frameTangent,current.distance*verticalTangent,-current.distance);
             // A smooth safety envelope also covers interrupted flights and user-chosen
             // orbit angles; it bends approaches before a surface reaches the near plane.
-            position=AvoidSphere(position,Vector3.zero,SolarLayout.SunRadius+0.5f);
-            if(system!=null && system.Planets!=null)
-                foreach(var body in system.Planets) position=AvoidSphere(position,body.transform.position,body.Data.visualRadius+0.4f);
+            if(!MapMode)
+            {
+                position=AvoidSphere(position,Vector3.zero,SolarLayout.SunRadius+0.5f);
+                if(system!=null && system.Planets!=null)
+                    foreach(var body in system.Planets) position=AvoidSphere(position,body.transform.position,body.Data.visualRadius+0.4f);
+            }
+            else if(system!=null && system.Universe!=null && system.Universe.InStarSystem && system.Universe.CurrentScene!=null)
+            {
+                foreach(var body in system.Universe.CurrentScene.Targets)
+                    position=AvoidSphere(position,body.transform.position,body.Radius+0.4f);
+            }
             // The off-axis pivot is projected into the free region beside/above the article.
             Quaternion rotation=Quaternion.LookRotation(current.pivot-position,current.rotation*Vector3.up)
                 *Quaternion.FromToRotation(Vector3.forward,new Vector3(frameTangent,verticalTangent,1));
@@ -168,6 +209,12 @@ namespace SolarExplorer
         private Pose Destination()
         {
             float tangent = Mathf.Tan(view.fieldOfView*Mathf.Deg2Rad*0.5f);
+            if(MapMode)
+            {
+                if(scaleDeparture) return scaleDestination;
+                float fit=Portrait?Mathf.Min(0.245f,view.aspect*0.78f):Mathf.Min(0.52f,view.aspect*0.45f);
+                return new Pose {pivot=mapPivot,rotation=Quaternion.Euler(pitch,yaw,0),distance=mapRadius/(tangent*fit)*zoom,frame=0.34f};
+            }
             if (Target == null)
             {
                 Quaternion rotation = Quaternion.Euler(overviewPitch,overviewYaw,0);
@@ -206,11 +253,43 @@ namespace SolarExplorer
                 center.y-=distance*tangent*0.13f;
                 return new Pose { pivot=rotation*center,rotation=rotation,distance=distance*overviewZoom,frame=0 };
             }
-            float bounds = Target.Data.visualRadius*(Target.Index==5?2.35f:1.15f);
+            float bounds = Target.Data.visualRadius*1.15f;
+            float focusDistance=Target.Index==5?SaturnFocusDistance(tangent):
+                bounds/(tangent*(Portrait?Mathf.Min(0.27f,view.aspect*0.82f):Mathf.Min(0.56f,Mathf.Max(0.2f,view.aspect*0.42f))));
             return new Pose {
                 pivot=Target.transform.position,rotation=Quaternion.Euler(pitch,yaw,0),frame=0.34f,
-                distance=bounds/(tangent*(Portrait?Mathf.Min(0.27f,view.aspect*0.82f):Mathf.Min(0.56f,Mathf.Max(0.2f,view.aspect*0.42f))))*zoom
+                distance=focusDistance*zoom
             };
+        }
+
+        private float SaturnFocusDistance(float tangent)
+        {
+            // Fit the projected ring ellipse, rather than an oversized sphere around it.
+            // Use the arrival angle even during orbit, so rotation never changes zoom.
+            Quaternion inverse=Quaternion.Inverse(Quaternion.Euler(SaturnPitch,SaturnYaw,0));
+            var points=framingPoints; points.Clear();
+            float radius=Target.Data.visualRadius;
+            AddSphereBounds(points,Quaternion.identity,Vector3.zero,radius*1.04f);
+            for(int i=0;i<64;i++)
+            {
+                float angle=i*Mathf.PI*2/64;
+                points.Add(inverse*(SolarLayout.SaturnTilt*new Vector3(Mathf.Cos(angle),0,Mathf.Sin(angle))*radius*2.3f));
+            }
+            Vector2 center=FocusViewport;
+            Vector2 minimum=Portrait?new Vector2(0.055f,0.505f):new Vector2(0.035f,0.17f);
+            Vector2 maximum=Portrait?new Vector2(0.945f,0.815f):new Vector2(0.625f,0.83f);
+            Vector2 projection=new Vector2(tangent*view.aspect,tangent);
+            Vector2 offset=Vector2.Scale((Vector2.one*0.5f-center)*2,projection);
+            float distance=0;
+            foreach(var point in points)
+            {
+                Vector2 projected=new Vector2(point.x,point.y)+offset*point.z;
+                float horizontal=projected.x<0?center.x-minimum.x:maximum.x-center.x;
+                float vertical=projected.y<0?center.y-minimum.y:maximum.y-center.y;
+                distance=Mathf.Max(distance,Mathf.Abs(projected.x)/(2*projection.x*horizontal)-point.z);
+                distance=Mathf.Max(distance,Mathf.Abs(projected.y)/(2*projection.y*vertical)-point.z);
+            }
+            return distance;
         }
 
         private static void AddSphereBounds(System.Collections.Generic.List<Vector3> points,Quaternion inverse,Vector3 position,float radius)
